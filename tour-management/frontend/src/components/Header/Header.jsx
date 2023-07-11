@@ -50,7 +50,7 @@ const Header = () => {
                 <Button className="btn primary__btn"> <Link to='/register'>Register</Link></Button>
               </div>
               <div className="mobile__menu">
-              <i class="ri-menu-add-line"></i>
+              <i className="ri-menu-add-line"></i>
               </div>
             </div>
 

@@ -55,19 +55,19 @@ const Footer = () => {
               <div className="social d-flex align-items-center gap-4">
                 <span>
                   <Link to="#">
-                    <i class="ri-youtube-fill"></i>
+                    <i className="ri-youtube-fill"></i>
                   </Link>
                 </span>
 
                 <span>
                   <Link to="#">
-                    <i class="ri-facebook-fill"></i>
+                    <i className="ri-facebook-fill"></i>
                   </Link>
                 </span>
 
                 <span>
                   <Link to="#">
-                    <i class="ri-github-fill"></i>
+                    <i className="ri-github-fill"></i>
                   </Link>
                 </span>
               </div>
@@ -106,19 +106,19 @@ const Footer = () => {
              
                 <ListGroupItem  className="ps-0 border-0 d-felx align-items-center gap-3">
                   <h6 className="mb-0 d-flex align-items-center gap-2">
-                  <span><i class="ri-map-pin-line"></i></span>Address</h6>
+                  <span><i className="ri-map-pin-line"></i></span>Address</h6>
                   <p className="mb-0">Delhi, India</p>
                 </ListGroupItem>
 
                 <ListGroupItem  className="ps-0 border-0 d-felx align-items-center gap-3">
                   <h6 className="mb-0 d-flex align-items-center gap-2">
-                  <span><i class="ri-mail-line"></i></span>Email</h6>
+                  <span><i className="ri-mail-line"></i></span>Email</h6>
                   <p className="mb-0">Trackway@gmail.com</p>
                 </ListGroupItem>
 
                 <ListGroupItem  className="ps-0 border-0 d-felx align-items-center gap-3">
                   <h6 className="mb-0 d-flex align-items-center gap-2">
-                  <span><i class="ri-phone-line"></i></span>Phone</h6>
+                  <span><i className="ri-phone-line"></i></span>Phone</h6>
                   <p className="mb-0">+9876736210</p>
                 </ListGroupItem>
             

@@ -30,12 +30,12 @@ const Tourcard = ({tour}) => {
                 {/* location & Icon */}
                 <span className="tour_location d-flex align-items-center gap-1">
                   {/* Props */}
-                <i class="ri-map-pin-line"></i> {city}    
+                <i className="ri-map-pin-line"></i> {city}    
                 </span>
                   
                    {/* Rating & Icon   ! important */}
                 <span className="tour__rating d-flex align-items-center gap-1">
-                <i class="ri-star-fill"></i> {avgRating===0?null:avgRating}
+                <i className="ri-star-fill"></i> {avgRating===0?null:avgRating}
                 {totalRatintg===0 ? (
                     "Not Rated"
                 ) : (<span>({reviews.length})</span>
