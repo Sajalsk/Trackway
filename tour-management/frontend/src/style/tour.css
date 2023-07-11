@@ -1,0 +1,42 @@
+.pagination span {
+    width: 2rem;
+    height: 2rem;
+    padding: 5px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--secondary-color);
+    color: var(--heading-color);
+    font-size: 1.1rem; 
+    cursor: pointer;
+    font-weight: 700;
+
+}
+
+.active__page {
+    background-color: var(--secondary-color);
+    color: #fff !important;
+}
+
+.nz {
+        margin-top: 3rem;
+}
+
+.big-feature-section  {
+    gap: 120px;
+    padding: 100px var(--padding-inline-section) 0;
+}
+
+.big-feature-section img {
+    width: 100%;
+}
+
+.big-feature-desc {
+    margin-top: 30px;
+    align-items: flex-start;
+}
+
+.big-feature-desc a {
+    margin-top: 30px;
+}

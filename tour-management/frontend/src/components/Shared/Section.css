@@ -1,0 +1,18 @@
+.c__section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+    background: url('../../assets/images/tour-img06.jpg')  center center;
+    background-size: cover;
+    height: 300px;
+    
+}
+
+
+.c__section h1{
+    font-size: 2.5rem;
+    /* align-items: center; */
+    color: #043757;
+
+}
