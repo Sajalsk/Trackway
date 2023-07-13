@@ -6,13 +6,13 @@ import CalculateavgRating from '../../Utilis/avgrating';
 
 const Tourcard = ({tour}) => {
 
-    const {id,title,city,photo,price,featured,reviews} = tour
+    const {_id,title,city,photo,price,featured,reviews} = tour
     const {totalRatintg,avgRating} = CalculateavgRating(reviews);
     
 
   return (
     <div className="tour__card">
-
+ 
 {/* TourCard is mapped in the FeatureList */}
 
         {/* Outer  Rendering from Tour data */}
@@ -45,14 +45,14 @@ const Tourcard = ({tour}) => {
 
             {/* Title  */}
             <h5 className='tour__title' >
-                <Link to ={`/tours/${id}`}>{title}</Link>  
+                <Link to ={`/tours/${_id}`}>{title}</Link>  
             </h5>
 
            {/* Price & BookNow */}
             <div className="card__bottom d-flex align-items-center justify-content-between mt-3">
             <h5>${price} <span>/per person</span></h5>
 
-            <button className='btn booking__btn'><Link to ={`/tours/${id}`}>Book Now</Link></button>
+            <button className='btn booking__btn'><Link to ={`/tours/${_id}`}>Book Now</Link></button>
                 </div>
 
         </CardBody>

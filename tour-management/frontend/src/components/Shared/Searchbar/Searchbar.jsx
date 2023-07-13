@@ -1,25 +1,37 @@
 import {useRef,React} from 'react'
 import './Searchbar.css'
 import {Col,Form,FormGroup} from "reactstrap";
+
+import {BASE_URL} from '../../../Utilis/config.js' 
+import { useNavigate } from 'react-router-dom';
 const Searchbar = () => {
 
     const locationRef=  useRef(" ");   /* For accepting change in fields */
     const WheretoRef= useRef(" ");
     const DateRef  = useRef(" ");
-    const AdultsRef = useRef(0);
+    const maxGroupSizeRef = useRef(0);
+    const navigate = useNavigate();
 
-    const Searchhandle =()=> {
+    const Searchhandle =async ()=> {
         const location = locationRef.current.value;
         const Whereto = WheretoRef.current.value;
         const Date = DateRef.current.value;
-        const Adults = AdultsRef.current.value;
+        const maxGroupSize = maxGroupSizeRef.current.value;
+        
 
-        if(location==='' || Whereto==='' || Date==='' || Adults==='') {
+        if(location==='') {
             alert("All Fields are Required");
         }
-        else {
-            alert("OK")
-        }
+                 // maxgroupsize ?: maxGroupSize
+        const res =await fetch (`${BASE_URL}/tours/search/getTourBySearch?city=${location}`)
+
+        if(!res.ok) alert('Sommething went Wrong');
+
+        const result =await res.json();
+
+        navigate(`/tours/search?city=${location}`,{state:result.data})
+
+       
     };
 
   return (
@@ -62,12 +74,12 @@ const Searchbar = () => {
             </FormGroup>
 
             <FormGroup className='d-flex gap-4 form__group form__group-fast'>
-               {/* Adults */}
+               {/* maxGroupSize */}
                 <span>
                 <i className="ri-group-line"></i>
                 <div>
                     <h6>Adults</h6>
-                    <input type="number" placeholder='Max Adults'  ref={AdultsRef} />
+                    <input type="number" placeholder='Adults'  ref={maxGroupSizeRef} />
                 </div>
                 </span>
             </FormGroup>

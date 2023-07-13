@@ -1,19 +1,26 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState,useContext } from "react";
 import "../style/tourDetail.css";
 import { Container, Row, Col, Form, ListGroup } from "reactstrap";
 import avatar from "../assets//images/avatar.jpg";
 
 import { useParams } from "react-router-dom";
-import toursdata from "../assets/data/tours";
+// import toursdata from "../assets/data/tours";
 import CalculateavgRating from "../Utilis/avgrating";
 import Booking from "../components/Booking/Booking";
+import useFetch from "../hooks/useFetch";
+import { BASE_URL } from "../Utilis/config";
+import { AuthContext } from "../context/AuthContext";
 
 const TourDetails = () => {
   const { id } = useParams();
   const reviewsMsgRef = useRef("");
   const [tourRating, settourRating] = useState(null);
+  const {user}=useContext(AuthContext)
 
-  const tour = toursdata.find((tour) => tour.id === id);
+ // Fetch data from Database API
+  const {data:tour,loading,error} =useFetch(`${BASE_URL}/tours/${id}`)
+  // Static Data
+  // const tour = toursdata.find((tour) => tour.id === id);
 
   const {
     photo,
@@ -31,16 +38,51 @@ const TourDetails = () => {
 
   const options = { day: "numeric", month: "long", year: "numeric" };
 
-  const SubmitHandler = (e) => {
+  const SubmitHandler = async (e) => {
     e.preventDefault();
     const reviewText = reviewsMsgRef.current.value;
-    alert(`${reviewText} , ${tourRating}`);
+    // alert(`${reviewText} , ${tourRating}`);
+
+  
+
+    try {
+      if(!user|| user===undefined || user===null) {
+        alert("Please Sign in")
+      }
+      const reviewobj ={
+        username:user?.username,
+        reviewText,
+        rating:tourRating
+      }
+         const res  =await fetch(`${BASE_URL}/review/${id}`,{
+          method:'post',
+          headers:{
+            'content-type':'application/json'
+          },
+          credentials:'include',
+          body:JSON.stringify(reviewobj)
+         })
+
+         const result =await res.json();
+         if(!res.ok)  {
+         return alert(result.message)
+         } 
+         alert(result.message)
+    } catch (err) {
+       alert(err.message)
+    }
   };
 
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[tour])
   return (
     <section>
-      <Container>
-        <Row>
+      <Container> 
+      {!loading && <h4 className="text-center pt-05">Loading....</h4>}
+      {!error && <h4 className="text-center pt-05">{error}</h4>} 
+        {
+          !loading && !error && <Row>
           <Col lg="8">
             <div className="tour__content">
               {/* Image  */}
@@ -92,14 +134,14 @@ const TourDetails = () => {
               </div>
               {/* End of Tour Content  */}
 
-            {/* Number of Review  */}
+              {/* Number of Review  */}
               <div className="tour__reviews mt-4">
                 <h4>Reviews ({reviews?.length} reviews)</h4>
                 <Form
                   onSubmit={SubmitHandler}
                   className="d-flex align-items-center gap-3 mb-4 rating__group"
                 >
-                    {/* Star  */}
+                  {/* Star  */}
                   <span onClick={() => settourRating(1)}>
                     1<i className="ri-star-s-fill"></i>
                   </span>
@@ -132,7 +174,7 @@ const TourDetails = () => {
                   </div>
                 </Form>
 
-                 {/* Reviews  */}
+                {/* Reviews  */}
                 <ListGroup>
                   {reviews?.map((reviews) => (
                     <div className="review__item" key={reviews.id}>
@@ -142,19 +184,19 @@ const TourDetails = () => {
                       <div className="w-100">
                         <div className="d-felx align-items-center justify-content-between">
                           <div>
-                            <h5>End-User</h5>
+                            <h5>{reviews.username}</h5>
                             <p>
                               {" "}
-                              {new Date("12-09-23").toLocaleDateString(
+                              {new Date(reviews.createdAt).toLocaleDateString(
                                 "en-US",
                                 options
                               )}
                             </p>
                           </div>
                         </div>
-                        <h6>Not Driven</h6>
+                        <h6>{reviews.reviewText}</h6>
                         <span className="d-felx align-items-center">
-                          1<i className="ri-star-s-fill"></i>
+                          {reviews.rating}<i className="ri-star-s-fill"></i>
                         </span>
                       </div>
                     </div>
@@ -164,11 +206,12 @@ const TourDetails = () => {
             </div>
           </Col>
 
-            {/* Book Now  */}
+          {/* Book Now  */}
           <Col lg="4">
             <Booking tour={tour} avgRating={avgRating} />
           </Col>
         </Row>
+        }
       </Container>
     </section>
   );

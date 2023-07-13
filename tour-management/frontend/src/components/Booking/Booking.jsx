@@ -1,17 +1,20 @@
-import React, { useState,useRef } from "react";
+import React, { useState,useRef,useContext} from "react";
 import "./Booking.css";
 import { Button, Form, FormGroup, ListGroup, ListGroupItem } from "reactstrap";
 
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { BASE_URL } from "../../Utilis/config";
 
 const Booking = ({ tour, avgRating }) => {
-  const { price, reviews } = tour;
-
+  const { price, reviews,title } = tour;
   const navigate = useNavigate();
 
-  const [credentials, setCredential] = useState({
-    userId: "01",
-    userEmail: "sajal@gmail.com",
+  const {user}=useContext(AuthContext)
+  const [booking, setbooking] = useState({
+    userId: user && user._id,
+    userEmail:user && user.email,
+    tourName : title,
     fullName: "",
     phone: "",
     guestSize: "",
@@ -25,16 +28,43 @@ const Booking = ({ tour, avgRating }) => {
  
   
   const handleChange = (e) => {
-    setCredential((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setbooking((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+
+  
   };
 
   const ServiceFee = 10
    const totalamount =
-    Number(price) * Number(credentials.guestSize) + Number(ServiceFee);
+    Number(price) * Number(booking.guestSize) + Number(ServiceFee);
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
 
     e.preventDefault();
+    console.log(booking)
+
+    try {
+      if(!user|| user===undefined || user===null) {
+        alert("Please Sign in")
+      }
+     
+         const res  =await fetch(`${BASE_URL}/booking`,{
+          method:'post',
+          headers:{
+            'content-type':'application/json'
+          },
+          credentials:'include',
+          body:JSON.stringify(booking)
+         })
+
+         const result =await res.json();
+         if(!res.ok)  {
+         return alert(result.message)
+         } 
+         navigate('/thank-you')
+    } catch (err) {
+       alert(err.message)
+    }
+  
     const name = nameRef.current.value;
     const guestSize = guestSizeRef.current.value;
     const contact = contactRef.current.value;
@@ -46,7 +76,7 @@ const Booking = ({ tour, avgRating }) => {
     else {
       
       navigate('/Thank-You')
-      console.log(credentials);
+      console.log('credentials');
     }
   
   };

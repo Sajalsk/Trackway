@@ -1,8 +1,10 @@
-import React from "react";
+import{ useContext} from  "react";
 import { Container, Button, Row } from "reactstrap";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link,useNavigate } from "react-router-dom";
 import './Header.css'
 import logo from "../../assets/images/Trackway.png";
+
+import { AuthContext } from "../../context/AuthContext";
 
 const nav_link = [
   {
@@ -22,6 +24,15 @@ const nav_link = [
 ];
 
 const Header = () => {
+
+  // const headRef= useRef(null);
+  const navigate= useNavigate(null);
+  const {user,dispatch}= useContext(AuthContext);
+
+  const logout=()=>{
+    dispatch({type:"LOGOUT"});
+    navigate('/')
+  };
   return (
     // Navbar
     <header className="header">
@@ -46,9 +57,20 @@ const Header = () => {
              {/* Login & Register */}
             <div className="nav-right d-flex align-items-center gap-4">
               <div className="nav-btns d-flex align-items-center gap-4">
+
+                {user ? (
+                  <>
+                  <h5 className="mb=04">{user.username}</h5>
+                  <Button className="btn btn-dark"onClick={logout}>Logout</Button>
+                  </>
+                  ): (
+                 <>
                 <Button className="btn primary__btn"> <Link to='/login'>Login</Link></Button>
                 <Button className="btn primary__btn"> <Link to='/register'>Register</Link></Button>
+                </>
+                )}
               </div>
+
               <div className="mobile__menu">
               <i className="ri-menu-add-line"></i>
               </div>
