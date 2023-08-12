@@ -10,14 +10,14 @@ export const CreateUser = async (req,res)=>{
         res 
           .status(200)
           .json({
-            sucess:true,
+            success:true,
             message:"Successfully Created",
             data :savedUser
           });
     }  catch(err) {
         res
         .status(500)
-        .json ({sucess:false ,message:"Failed to Create"});
+        .json ({success:false ,message:"Failed to Create"});
     }
 };
 
@@ -35,7 +35,7 @@ export const UpdateUser =async (req,res)=>{
        );
 
        res.status(200).json({
-        sucess:true,
+        success:true,
         message:"Successfully Updated",
         data :UpdateUser,
        })
@@ -43,7 +43,7 @@ export const UpdateUser =async (req,res)=>{
   catch(err){
     res
     .status(500)
-    .json ({sucess:false ,message:"Failed to Update"});
+    .json ({success:false ,message:"Failed to Update"});
 }
 };
 
@@ -55,7 +55,7 @@ export const DeleteUser =async (req,res)=>{
        await User.findByIDAndDelete(id);
 
        res.status(200).json({
-        sucess:true,
+        success:true,
         message:"Successfully Deleted",
         
        })
@@ -63,7 +63,7 @@ export const DeleteUser =async (req,res)=>{
   catch(err){
     res
     .status(501)
-    .json ({sucess:false ,message:"Failed to Delete"});
+    .json ({success:false ,message:"Failed to Delete"});
 }
 };
 
@@ -76,7 +76,7 @@ export const GetSingleUser =async (req,res)=>{
       const user= await User.findByID(id);
 
        res.status(200).json({
-        sucess:true,
+        success:true,
         message:"Successfully Founded",
         data : user,
         
@@ -85,7 +85,7 @@ export const GetSingleUser =async (req,res)=>{
   catch(err){
     res
     .status(404)
-    .json ({sucess:false ,message:"Not Found"});
+    .json ({success:false ,message:"Not Found"});
 }
 };
 
@@ -99,7 +99,7 @@ export const GetAllUser =async (req,res)=>{
     
 
        res.status(200).json({
-        sucess:true,
+        success:true,
         message:"Successfully",
         data : users,
         
@@ -108,7 +108,7 @@ export const GetAllUser =async (req,res)=>{
   catch(err){
     res
     .status(404)
-    .json ({sucess:false ,message:"Not Found"});
+    .json ({success:false ,message:"Not Found"});
 }
 };
 

@@ -54,13 +54,14 @@ const Booking = ({ tour, avgRating }) => {
           },
           credentials:'include',
           body:JSON.stringify(booking)
+          
          })
-
+         
          const result =await res.json();
          if(!res.ok)  {
          return alert(result.message)
          } 
-         navigate('/thank-you')
+         
     } catch (err) {
        alert(err.message)
     }

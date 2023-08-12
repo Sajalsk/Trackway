@@ -23,6 +23,7 @@ const Login = () => {
     e.preventDefault();
 
     dispatch ({type:'LOGIN_START'})
+
     try {
       const res =await fetch(`${BASE_URL}/auth/login`,{
         method:'post',
@@ -31,16 +32,19 @@ const Login = () => {
         },
         credentials:'include',
         body:JSON.stringify(credential)
+      
       })
       
-      const result =await res.json()
+      const result = await res.json()
       if(!res.ok) alert(result.message)
+
       console.log(result.data);
-      dispatch({type:'LOGIN_SUCESS',payload:result.data});
-      navigate('/login')
+      dispatch({type:'LOGIN_SUCCESS',payload:result.data});
+      navigate('/home')
+     
     }
       catch (err) {
-        dispatch ({type:'LOGIN_FAILURE',payload:err.message});
+        dispatch ({type:'LOGIN_FAILURE', payload:err.message});
     }
   };
 

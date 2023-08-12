@@ -1,7 +1,8 @@
-import React, { useState,useContext } from "react";
+import React, { useState,useContext, useEffect} from "react";
 import "../style/login.css";
 import { Container, Row, Col, Form, FormGroup, Button } from "reactstrap";
-import { Link,useNavigate } from "react-router-dom";
+import {  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import loginIMg from "../assets/images/register.png";
 import userIcon from "../assets/images/user.png";
@@ -19,12 +20,24 @@ const Register = () => {
 
   const {dispatch} = useContext(AuthContext)
   const navigate = useNavigate()
-   
+
+  var [count, setCount] = useState(0);
+  var [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {
+    setCount = 0
+  }, []);
+
+  // useEffect(() => {
+  //   window.localStorage.setItem('count', count);
+  // }, [setCount]);
+
   const handleClick = async (e) => {
     e.preventDefault();
+  
 
     try {
-     
+     console.log(credential);
       const res = await fetch(`${BASE_URL}/auth/register`,{
         
         method:'post',
@@ -34,14 +47,15 @@ const Register = () => {
 
         body:JSON.stringify(credential)
       })
-
+  
       const result = await res.json()
       console.log(result);
      
       if(!res.ok) alert(result.message)
 
       dispatch({type:'REGISTER_SUCCESS'})
-      // navigate('/login')
+      alert("User Created Successfully");
+       navigate('/login')
     }
     catch (err) {
       console.log("in catch");
@@ -51,8 +65,24 @@ const Register = () => {
 
   const handleChange = (e) => {
     setCredential((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-  
   };
+
+ const verify=()=>{
+   
+   window.open ('https://www.signzy.com/fintech-apis/aadhaar-verification-api/');
+    // setCount=1;
+    // alert("Verfied")
+  
+  setCount  = (count + 1);
+  console.log(setCount);
+  setDisabled(false); 
+ // console.log(setDisabled);
+  }
+
+  const statecheck=()=>{
+   //  console.log(setDisabled);
+    console.log(setCount);
+  }
 
   return (
     <section>
@@ -77,8 +107,9 @@ const Register = () => {
                       type="username"
                       placeholder="Username"
                       required
-                      id="userame"
+                      id="username"
                       onChange={handleChange}
+
                     />
                   </FormGroup>
 
@@ -102,18 +133,28 @@ const Register = () => {
                     />
                   </FormGroup>
 
-                  <Button  style={{fontSize:"25px",}}
-                    className="btn btn-primary"
-                    type="submit"
-                  >
-                    Register
+                  <Button  onClick={verify}  style={{fontSize:"20px", marginLeft:"25px",
+                  backgroundColor: "" , height:"50px" , borderRadius:"6px"}}
+                  className="btn btn-danger">
+                  ID Verification
+                  </Button>
+                 
+                  <Button disabled={disabled} style={{fontSize:"25px",marginTop:"20px" , marginLeft:"43px",
+                  backgroundColor: "" }}
+                  className="btn btn-success"
+                  type="submit">
+                  Register
                   </Button>
 
-                  <p  style={{fontSize:"17px",}}>
-                  Already have an Account? <Link to="/login" style={{fontSize:"25px"}}>Login</Link>
-                  </p>
+                  <button onClick={statecheck}>State</button>
 
+                  {/* <p  style={{fontSize:"17px",}}>
+                  Already have an Account? <Link to="/login" style={{fontSize:"25px"}}>
+                    <p style={{fontSize:"30px" , marginTop:"-20px" , border:"2px solid pink" , borderRadius:"5px" , boxSizing: "border-box"}}>Login</p></Link>
+                    </p> */}
+              
                 </Form>
+
               </div>
             </div>
           </Col>

@@ -31,7 +31,8 @@ const Header = () => {
 
   const logout=()=>{
     dispatch({type:"LOGOUT"});
-    navigate('/')
+    navigate('/home')
+    // alert('clicked');
   };
   
   return (
@@ -59,13 +60,15 @@ const Header = () => {
             <div className="nav-right d-flex align-items-center gap-4">
               <div className="nav-btns d-flex align-items-center gap-4">
 
-                {user ? (
+                { 
+                user ? (
                   <>
-                  <h5 className="mb=04">{user.username}</h5>
-                  <Button className="btn btn-dark"onClick={logout}>Logout</Button>
+                  <h5 style={{marginLeft:"10px"}} className="mb-1" >{user.username}</h5>
+                  <Button type="submit" className="btn btn-dark" onClick={logout} >Logout</Button>
                   </>
                   ): (
                  <>
+               
                 <Button className="btn primary__btn"> <Link to='/login'>Login</Link></Button>
                 <Button className="btn primary__btn"> <Link to='/register'>Register</Link></Button>
                 </>

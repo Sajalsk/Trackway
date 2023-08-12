@@ -6,6 +6,7 @@ import TourCard from "../components/Shared/Tourcard.jsx";
 import Newsletter from '../components/Shared/Newsletter.jsx'
 
 const SearchResultList = () => {
+  
   const location = useLocation();
   const [data] = useState(location.state);
   console.log(data);

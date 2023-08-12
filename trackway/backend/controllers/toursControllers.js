@@ -8,12 +8,12 @@ export const CreateTour = async (req, res) => {
   try {
     const savedTour = await newTour.save();
     res.status(200).json({
-      sucess: true,
+      success: true,
       message: "Successfully Created",
       data: savedTour,
     });
   } catch (err) {
-    res.status(500).json({ sucess: false, message: "Failed to Create" });
+    res.status(500).json({ success: false, message: "Failed to Create" });
   }
 };
 
@@ -28,12 +28,12 @@ export const UpdateTour = async (req, res) => {
       { new: true }
     );
     res.status(200).json({
-      sucess: true,
+      success: true,
       message: "Successfully Updated",
       data: UpdateTour,
     });
   } catch (err) {
-    res.status(500).json({ sucess: false, message: "Failed to Update" });
+    res.status(500).json({ success: false, message: "Failed to Update" });
   }
 };
 
@@ -63,12 +63,13 @@ export const GetSingleTour = async (req, res) => {
     const tour = await Tour.findById(id).populate("reviews");
 
     res.status(200).json({
-      sucess: true,
+      success: true,
       message: "Successfully Founded",
       data: tour,
     });
   } catch (err) {
-    res.status(404).json({ sucess: false, message: "Not Found" });
+    console.log(err);
+    res.status(404).json({ success: false, message: "Not Found for search getSingle Tour" });
   }
 };
 
@@ -86,13 +87,13 @@ export const GetAllTour = async (req, res) => {
       .limit(8);
 
     res.status(200).json({
-      sucess: true,
+      success: true,
       count: tours.length,
       message: "Successfully",
       data: tours,
     });
   } catch (err) {
-    res.status(404).json({ sucess: false, message: "Not Found" });
+    res.status(404).json({ success: false, message: "Not Found GetAllTour" });
   }
 };
 
@@ -111,15 +112,17 @@ export const GetTourbySearch = async (req, res) => {
     //  maxGroupSize: { $gte: maxGroupSize },
     }).populate("reviews");
     res.status(200).json({
-      sucess: true,
+      success: true,
       message: "Successfully",
       data: tours,
     });
   } catch (err) {
-    res.status(200).json({
-      sucess: false,
-      message: "Not found",
+    
+    res.status(404).json({
+      success: false,
+      message: "Not Found tours tours",
     });
+    
   }
 };
 
@@ -127,18 +130,18 @@ export const GetTourbySearch = async (req, res) => {
 
 export const GetFeatured = async (req, res) => {
   try {
-    console.log("In here")
+    
     const tours = await Tour.find({ featured: true })
       .populate("reviews")
       .limit(8);
     res.status(200).json({
-      sucess: true,
+      success: true,
       count: tours.length,
       message: "Successfully",
       data: tours,
     });
   } catch (err) {
-    res.status(404).json({ sucess: false, message: "Not Found" });
+    res.status(404).json({ success: false, message: "Not Found GetFeatured" });
   }
 };
 

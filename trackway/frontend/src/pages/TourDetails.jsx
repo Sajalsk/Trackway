@@ -44,8 +44,6 @@ const TourDetails = () => {
     const reviewText = reviewsMsgRef.current.value;
     // alert(`${reviewText} , ${tourRating}`);
 
-  
-
     try {
       if(!user|| user===undefined || user===null) {
         alert("Please Sign in")
