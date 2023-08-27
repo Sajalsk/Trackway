@@ -15,14 +15,16 @@ const Searchbar = () => {
   const navigate = useNavigate();
 
   const Searchhandle = async () => {
+    
     const location = locationRef.current.value;
-    const Whereto = WheretoRef.current.value;
-    const Date = DateRef.current.value;
-    const maxGroupSize = maxGroupSizeRef.current.value;
+    // const Whereto = WheretoRef.current.value;
+    // const Date = DateRef.current.value;
+    // const maxGroupSize = maxGroupSizeRef.current.value;
 
     if (location === "") {
       alert("All Fields are Required");
     }
+    
     // maxgroupsize ?: maxGroupSize
 
     const res = await fetch(
@@ -30,8 +32,11 @@ const Searchbar = () => {
     );
 
     if (!res.ok) alert("Sommething went Wrong");
+
     const result = await res.json();
     navigate(`/tours/search?city=${location}`, { state: result.data });
+    
+    console.log(location)
   };
 
   return (

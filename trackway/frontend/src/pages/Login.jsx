@@ -45,6 +45,7 @@ const Login = () => {
     }
       catch (err) {
         dispatch ({type:'LOGIN_FAILURE', payload:err.message});
+        navigate('/login');
     }
   };
 

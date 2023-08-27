@@ -1,16 +1,20 @@
+import { json } from "express";
 import Booking from "../models/Booking.js";
 
 // create new Booking
 export const createBooking = async (req, res) => {
+ 
     const newBooking = new Booking(req.body);
     try {
       const savedBooking = await newBooking.save();
       res
         .status(200)
-        .json({ success: "true", message: "Your Tour is Booked", data: savedBooking });
+        .json({ success: "True", message: "Your Tour is Booked from backend", data: savedBooking });
     } catch (err) {
       res.status(200).json({ success: "false", message: "Failed to Book due to Server Issues" });
+      console.log(err)
     }
+    
 }
 
 // get single booking

@@ -53,7 +53,7 @@ const tours = [
   {
     id: "03",
     title: "Snowy Mountains, Thailand",
-    city: "Thailand",
+    city: "Agra",
     distance: 500,
     address : "Delhi",
     price: 199,
@@ -163,6 +163,7 @@ const tours = [
     photo: tourImg03,
     featured: false,
   },
+  
 ];
 
 export default tours;

@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    card: {
+      type: String,
+      required: true,
+    },
 
     photo: {
       type: String,

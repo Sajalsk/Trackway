@@ -26,7 +26,7 @@ export const CreateUser = async (req,res)=>{
 export const UpdateUser =async (req,res)=>{
   const id = req.params.id;
   
-  try{
+  try {
        const UpdateUser = await User.findByIDAndUpdate(
         id, {
           $set :req.body,
@@ -73,7 +73,7 @@ export const GetSingleUser =async (req,res)=>{
   const id = req.params.id;
 
   try{
-      const user= await User.findByID(id);
+      const user= await User.findById(id);
 
        res.status(200).json({
         success:true,
@@ -93,7 +93,7 @@ export const GetSingleUser =async (req,res)=>{
 
 export const GetAllUser =async (req,res)=>{
  
-  console.log(page);
+ // console.log(page);
   try{
       const users= await User.find({})
     

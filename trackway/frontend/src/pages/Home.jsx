@@ -109,9 +109,11 @@ const Home = () => {
                   We Will Serve you
                 </h2>
                 <p>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing <br />
-                  elit. Eveniet, temporibus!
+                Enhance delivery services and streamline operations for seamless goods transportation. <br />
+                The data informs about the movement of individuals between different locations and helps them to connect.
                 </p>
+               
+
               </div>
               <div className="counter__wrapper d-flex align-items-center gap-5">
                 <div className="counter__box">

@@ -17,8 +17,9 @@ const SearchResultList = () => {
       <section>
         <Container>
           <Row>
-            {data?.length===0?
+            {data?.length===0? (
                 <h4 className="text-center"> No Tours Found</h4>
+            )
               :
                 data?.map(tour=>
                   <Col lg='3' className="='mb-4" key={tour._id}>

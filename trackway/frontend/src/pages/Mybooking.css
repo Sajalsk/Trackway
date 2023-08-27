@@ -1,0 +1,21 @@
+.head {
+    padding: 10px;
+    color: hsl(0, 100%, 70%)!important;
+    border: 2px solid hsl(0, 100%, 70%)!important;
+    border-radius: 8px;
+    display: inline-block;
+   
+}
+
+.cardBook  { 
+    width: 50%;
+    margin-top: 50px  !important;
+    margin-left :100px !important;
+    justify-content: center !important;
+}
+
+ .cardBook img {
+    border-radius: 8px;
+    height: 200px;
+   
+}

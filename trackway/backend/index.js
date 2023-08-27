@@ -21,14 +21,17 @@ const corsOptions = {
 //database connection
 
 mongoose.set("strictQuery", false);
+
 const connect = async () => {
+  
   try {
-    await mongoose.connect(process.env.MONGO_URI, {        // connection of Mongodb & node.js
-      useNewURLParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(process.env.MONGO_URI , {
+      useNewUrlParser: "true",
+      useUnifiedTopology: "true"
+    });  
     console.log("Connected to Database Successfully");
   } catch (err) {
+    console.log(err);
     console.log("Failure Detected in Connection to Database");
   }
 };
@@ -47,5 +50,6 @@ app.use("/api/v1/booking", bookingRoute);
 
 app.listen(port, () => {
   connect();
+  // console.log(process.env.MONGO_URI);
   console.log("Server Listening on Port", port);
 });

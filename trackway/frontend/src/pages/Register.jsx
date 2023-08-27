@@ -1,8 +1,8 @@
-import React, { useState,useContext, useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "../style/login.css";
 import { Container, Row, Col, Form, FormGroup, Button } from "reactstrap";
-import {  } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import "./Register.css";
 
 import loginIMg from "../assets/images/register.png";
 import userIcon from "../assets/images/user.png";
@@ -10,56 +10,55 @@ import userIcon from "../assets/images/user.png";
 import { AuthContext } from "../context/AuthContext";
 import { BASE_URL } from "../Utilis/config";
 
-const Register = () => {
+// import Verify from "./Verify";
 
-  const [credential, setCredential] = useState({
+const Register = (props) => {
+
+const [credential, setCredential] = useState({
     username: undefined,
     email: undefined,
     password: undefined,
+    card : undefined
   });
 
-  const {dispatch} = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   var [count, setCount] = useState(0);
   var [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
-    setCount = 0
+    // eslint-disabled-next-line
+    setCount = 0;
+    setDisabled(true);
   }, []);
-
-  // useEffect(() => {
-  //   window.localStorage.setItem('count', count);
-  // }, [setCount]);
 
   const handleClick = async (e) => {
     e.preventDefault();
-  
 
     try {
-     console.log(credential);
-      const res = await fetch(`${BASE_URL}/auth/register`,{
-        
-        method:'post',
-        headers:{
-          'content-type':'application/json'
+      console.log(credential);
+      const res = await fetch(`${BASE_URL}/auth/register`, {
+        method: "post",
+        headers: {
+          "content-type": "application/json",
         },
 
-        body:JSON.stringify(credential)
-      })
-  
-      const result = await res.json()
-      console.log(result);
-     
-      if(!res.ok) alert(result.message)
+        body: JSON.stringify(credential),
+      });
 
-      dispatch({type:'REGISTER_SUCCESS'})
+      const result = await res.json();
+      console.log(result);
+
+      if (!res.ok) alert(result.message);
+
+      dispatch({ type: "REGISTER_SUCCESS" });
       alert("User Created Successfully");
-       navigate('/login')
-    }
-    catch (err) {
+      navigate("/login");
+
+    } catch (err) {
       console.log("in catch");
-      alert(err.message)
+      alert(err.message);
     }
   };
 
@@ -67,22 +66,76 @@ const Register = () => {
     setCredential((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
- const verify=()=>{
-   
-   window.open ('https://www.signzy.com/fintech-apis/aadhaar-verification-api/');
+  const Verify = () => {
+    // window.open ('https://www.signzy.com/fintech-apis/aadhaar-verification-api/');
     // setCount=1;
-    // alert("Verfied")
-  
-  setCount  = (count + 1);
-  console.log(setCount);
-  setDisabled(false); 
- // console.log(setDisabled);
-  }
+    alert("Verfied");
+    setCount = count + 1;
+  //  console.log(setCount);
 
-  const statecheck=()=>{
-   //  console.log(setDisabled);
-    console.log(setCount);
-  }
+    // console.log(setDisabled);
+  };
+
+  const statecheck = () => {
+    //  console.log(setDisabled);
+   //  console.log(setCount);
+  };
+
+  const d = [
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
+    [2, 3, 4, 0, 1, 7, 8, 9, 5, 6],
+    [3, 4, 0, 1, 2, 8, 9, 5, 6, 7],
+    [4, 0, 1, 2, 3, 9, 5, 6, 7, 8],
+    [5, 9, 8, 7, 6, 0, 4, 3, 2, 1],
+    [6, 5, 9, 8, 7, 1, 0, 4, 3, 2],
+    [7, 6, 5, 9, 8, 2, 1, 0, 4, 3],
+    [8, 7, 6, 5, 9, 3, 2, 1, 0, 4],
+    [9, 8, 7, 6, 5, 4, 3, 2, 1, 0],
+  ];
+
+  // permutation table
+  const p = [
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    [1, 5, 7, 6, 2, 8, 3, 0, 9, 4],
+    [5, 8, 0, 3, 7, 9, 6, 1, 4, 2],
+    [8, 9, 1, 6, 0, 4, 3, 5, 2, 7],
+    [9, 4, 5, 3, 1, 2, 6, 8, 7, 0],
+    [4, 2, 8, 6, 5, 7, 3, 9, 0, 1],
+    [2, 7, 9, 3, 8, 0, 6, 4, 1, 5],
+    [7, 0, 4, 6, 9, 1, 3, 2, 5, 8],
+  ];
+
+  // validates Aadhar number received as string
+  const validate = (aadharNumber) => {
+    let c = 0;
+    let invertedArray = aadharNumber.split("").map(Number).reverse();
+
+    invertedArray.forEach((val, i) => {
+      c = d[c][p[i % 8][val]];
+    });
+
+    return c === 0;
+  };
+
+  const aadhar = () => {
+
+    var message = document.getElementById("message");
+    var aadharNo = document.getElementById("card").value;
+
+    if (validate(aadharNo) && aadharNo.length>0 ) {
+      message.innerHTML =
+        "<span style='color: purple;  font-size:18px; '>Number is valid now you can Register 👍🏻 </span>";
+      setDisabled(false);
+     // console.log(credential.email);
+    } else {
+      message.innerHTML = "<span style='color: brown;  font-size: 20px; '> Please Enter a valid number 👎🏻</span>";
+      setDisabled(true);
+    }
+    setTimeout(() => {
+      message.innerHTML = " ";
+    }, 3000);
+  };
 
   return (
     <section>
@@ -98,18 +151,18 @@ const Register = () => {
                 <div className="user">
                   <img src={userIcon} alt="" />
                 </div>
+
                 <h2>Register</h2>
 
                 <Form onSubmit={handleClick}>
 
-                <FormGroup>
+                  <FormGroup>
                     <input
                       type="username"
                       placeholder="Username"
                       required
                       id="username"
                       onChange={handleChange}
-
                     />
                   </FormGroup>
 
@@ -120,6 +173,7 @@ const Register = () => {
                       required
                       id="email"
                       onChange={handleChange}
+                  
                     />
                   </FormGroup>
 
@@ -133,28 +187,87 @@ const Register = () => {
                     />
                   </FormGroup>
 
-                  <Button  onClick={verify}  style={{fontSize:"20px", marginLeft:"25px",
-                  backgroundColor: "" , height:"50px" , borderRadius:"6px"}}
-                  className="btn btn-danger">
-                  ID Verification
-                  </Button>
-                 
-                  <Button disabled={disabled} style={{fontSize:"25px",marginTop:"20px" , marginLeft:"43px",
-                  backgroundColor: "" }}
-                  className="btn btn-success"
-                  type="submit">
-                  Register
+                  <FormGroup>
+                    <label htmlFor="card">
+                      Aadhar Card No.
+                    </label>
+                    <input  className="aadhar"
+                      type="text"
+                      required
+                      id="card"
+                      placeholder="Aadhar Card No."
+                      name="card"
+                      onChange={handleChange}
+                    />
+                    <small
+                      id="message"
+                      className="form-text text-muted"
+                    ></small>
+                  </FormGroup>
+
+             {/* Aadhar Verify  */}
+                  <Button
+                    style={{
+                      marginBottom: "10px",
+                      marginLeft: "60px",
+                      width: "200px",
+                      padding: "10px",
+                      height: "50px",
+                    }}
+                    onClick={aadhar}
+                    className="btn btn-dark"
+                  >
+                    Verify your Aadhar
                   </Button>
 
-                  <button onClick={statecheck}>State</button>
+                  <div>
+                    {/* <Button    
+                    style={{marginBottom:"10px" ,marginLeft:"35px" , padding:"20px",height:"30px"}} 
+                    onClick={Verify}
+                    className="btn btn-danger"
+                  >
+                    ID Verification
+                  </Button> */}
+                    {/* onclick={props.Verify}  */}
+                  </div>
 
-                  {/* <p  style={{fontSize:"17px",}}>
-                  Already have an Account? <Link to="/login" style={{fontSize:"25px"}}>
-                    <p style={{fontSize:"30px" , marginTop:"-20px" , border:"2px solid pink" , borderRadius:"5px" , boxSizing: "border-box"}}>Login</p></Link>
-                    </p> */}
-              
+              {/* Register  */}
+                  <Button
+                    disabled={disabled}
+                    style={{
+                      fontSize: "25px",
+                      marginTop: "20px",
+                      marginLeft: "58px",
+                      backgroundColor: "",
+                      width: "200px",
+                      height: "50px",
+                    }}
+                    className="btn btn-success"
+                    type="submit"
+                  >
+                    Register
+                  </Button>
+
+                  <div>
+                    {/* <button onClick={statecheck}>State</button> */}
+                  </div>
+          
+                {/* Login */}
+                  <div>
+                    <p style={{ fontSize: "18px" }}>Already have a Account ? </p>
+                  
+                    <Button onClick={()=>{
+                      navigate('/login')
+                    }}
+                      style={{ marginLeft: "130px" }}
+                      className="btn btn-dark"
+                    >
+                      Login
+                    </Button>
+                  </div>
+
+
                 </Form>
-
               </div>
             </div>
           </Col>

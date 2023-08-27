@@ -4,36 +4,38 @@ const tourSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true,
-      unique: true,
+     // required: true,
+      // unique: true,
     },
+    
     city: {
       type: String,
-      required: true,
+      // required: true,
     },
     address: {
       type: String,
-      required: true,
+      // required: true,
     },
     distance: {
       type: Number,
-      required: true,
+      //  required: true,
     },
     photo: {
+      // data: Buffer,
       type: String,
-      required: true,
+      // required: true,
     },
     desc: {
       type: String,
-      required: true,
+      // required: true,
     },
     price: {
       type: Number,
-      required: true,
+      // required: true,
     },
     maxGroupSize: {
       type: Number,
-      required: true,
+      // required: true,
     },
 
     reviews: [

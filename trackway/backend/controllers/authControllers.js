@@ -6,6 +6,7 @@ import jwt from "jsonwebtoken";
 
 export const register = async (req, res) => {
   try {
+    
     console.log(req.body);
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password, salt);
@@ -15,6 +16,7 @@ export const register = async (req, res) => {
       username: req.body.username,
       email: req.body.email,
       password: hash,
+      card :req.body.card,
 
     })
    
@@ -29,6 +31,7 @@ export const register = async (req, res) => {
 };
 
 // User Login
+
 export const login = async (req, res) => {
   const email = req.body.email;
   

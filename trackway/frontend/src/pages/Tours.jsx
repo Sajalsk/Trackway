@@ -10,14 +10,17 @@ import useFetch from "../hooks/useFetch";
 import { BASE_URL } from "../Utilis/config";
 
 const Tours = () => {
+  
   const [pageCount, setpageCount] = useState(0);
   const [page, setpage] = useState(0);
 
   const { data: tours, loading, error } = useFetch(`${BASE_URL}/tours?page=${page}`);
-  const { data: tourCount } = useFetch(`${BASE_URL}/tours/search/GetTourCount`);
+  const { data: tourCount } = useFetch(`${BASE_URL}/tours/search/GetAllTour`);
 
   useEffect(() => {
-    const pages = Math.ceil(tourCount / 8);
+    //  const pages = Math.ceil(tourCount / 8);
+    const pages = tours;
+
     setpageCount(pages);
     window.scrollTo(0,0);
   }, [page,tourCount,tours]);
@@ -37,16 +40,19 @@ const Tours = () => {
           </Row>
         </Container>
       </section>
+
       <section className="pt-0">
-          {/* Mapping of Tours & pagination  */}
+       
+       {/* Loading && error  */}
         <Container>
-          {!loading && <h4 className="text-center pt-05">Loading....</h4>}
-          {!error && <h4 className="text-center pt-05">{error}</h4>} 
+          {loading && <h4 className="text-center pt-05">Loading....</h4>}  {/*  !loading   */}
+          {error && <h4 className="text-center pt-05">{error}</h4>}         {/*  !error   */}
 
           {!loading &&  !error && (
             <Row>
-              {tours.map((tour) => (
-                <Col lg="3" className="mb-4" key={tour._id}>
+                 {/* Mapping of Tours & pagination  */}
+              {tours?.map((tour) => (                         /* tour = tours */
+                <Col lg="3" className="mb-4" key={tour.id}>
                   <Tourcard tour={tour} />
                 </Col>
               ))}

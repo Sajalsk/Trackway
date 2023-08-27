@@ -5,6 +5,8 @@ import './Header.css'
 import logo from "../../assets/images/Trackway.png";
 
 import { AuthContext } from "../../context/AuthContext";
+// import Mybookings from "../../pages/Mybooking";
+
 
 const nav_link = [
   {
@@ -29,12 +31,22 @@ const Header = () => {
   const navigate= useNavigate(null);
   const {user,dispatch}= useContext(AuthContext);
 
+ 
+
   const logout=()=>{
     dispatch({type:"LOGOUT"});
     navigate('/home')
     // alert('clicked');
   };
-  
+
+  const handlemybooking=()=>{
+    navigate('./Mybooking')
+  }
+
+  const handlecreate=()=>{
+    navigate('./Create')
+  }
+
   return (
     // Navbar
     <header className="header">
@@ -43,9 +55,25 @@ const Header = () => {
           <div className="nav-wrapper d-flex align-items-center justify-content-between">
             {/* LOGO */}
             <div className="logo">
-              <img src={logo} alt="" srcSet="" />
+              <img onClick={()=>{
+                navigate('/home')
+              }} src={logo} alt="" srcSet="" />
             </div>
+            
+              {/* MyBookings */}
+
+          {
+            user ?
+           
+            (  <>
+             <Button onClick={handlecreate} style={{backgroundColor:"#e366af" ,boxSizing:"border-box",marginRight:"40px", border:"none"}} type="submit" className="btn btn-dark" >Create</Button>
+             <Button onClick={handlemybooking} style={{backgroundColor:"#e366af" , border:"none" , width:"100%" , maxWidth:"150px"}} type="submit" className="btn btn-dark"> My Bookings</Button>
+             </>
+            ) : (<p> </p>)
+          }
+
             {/* Home-About-tours & Mapping */}
+
             <div className="navigation">
               <ul className="menu d-flex align-items-centre gap-5">
                 {nav_link.map((item, index) => (      /*  items , index  ? key is for uniqueness */
@@ -56,19 +84,20 @@ const Header = () => {
                 ))}
               </ul>
             </div>
-             {/* Login & Register */}
+            
             <div className="nav-right d-flex align-items-center gap-4">
               <div className="nav-btns d-flex align-items-center gap-4">
-
                 { 
                 user ? (
                   <>
-                  <h5 style={{marginLeft:"10px"}} className="mb-1" >{user.username}</h5>
-                  <Button type="submit" className="btn btn-dark" onClick={logout} >Logout</Button>
+                  <h5 style={{marginLeft:"13px" , marginTop:"6px", fontFamily:"Sans" , color:"#e366af"}} className="mb-1" >{user.username}</h5>
+                   {/* Logout */}
+                  <Button type="submit" className="btn btn-dark" onClick={logout}>Logout</Button>
                   </>
                   ): (
                  <>
-               
+                {/* Login & Register */}
+
                 <Button className="btn primary__btn"> <Link to='/login'>Login</Link></Button>
                 <Button className="btn primary__btn"> <Link to='/register'>Register</Link></Button>
                 </>

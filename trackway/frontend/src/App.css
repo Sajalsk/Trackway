@@ -72,6 +72,28 @@ ul {
 .secondary__btn a:hover {
   color: inherit;
 }
+
+.upload-form {
+  text-align: center;
+  margin-top: 20px;
+}
+.custom-file-input {
+  display: inline-block;
+  padding: 8px 12px;
+  cursor: pointer;
+  background-color: #4c4faf;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+.custom-file-input:hover {
+  background-color: #45a049;
+}
+#image {
+  display: none;
+        }
+
 /* 
 .section__subtitle {
   background: var(--secondary-color);
@@ -85,3 +107,4 @@ ul {
   font-size: 1.7rem;
   color: var(--heading-color);
 } */
+

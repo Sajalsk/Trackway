@@ -7,12 +7,18 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { BASE_URL } from "../../Utilis/config";
 
+// import Thankyou from "../../pages/Thankyou";
+// import Mybooking from "../../pages/Mybooking";
+
 const Booking = ({ tour, avgRating }) => {
+
   const { price, reviews,title } = tour;
   const navigate = useNavigate();
 
-  const {user}=useContext(AuthContext)
+  const {user} = useContext(AuthContext)
+
   const [booking, setbooking] = useState({
+
     userId: user && user._id,
     userEmail:user && user.email,
     tourName : title,
@@ -32,7 +38,7 @@ const Booking = ({ tour, avgRating }) => {
     setbooking((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const ServiceFee = 10
+  const ServiceFee = 10;
 
   if(booking.guestSize===0)  var totalamount = 0;
   else  totalamount = Number(price) * Number(booking.guestSize) + Number(ServiceFee);
@@ -57,7 +63,7 @@ const Booking = ({ tour, avgRating }) => {
           
          })
          
-         const result =await res.json();
+         const result = await res.json();
          if(!res.ok)  {
          return alert(result.message)
          } 
@@ -73,18 +79,20 @@ const Booking = ({ tour, avgRating }) => {
     
     if(name==='' || guestSize==='' || contact==='') {
       alert("Fill the Details to Book")
-    }
-    else {
+    } else {
       
-      navigate('/Thank-You')
-      console.log('credentials');
+     navigate('/Thank-You')
+      console.log('From frontend - credentials');
     }
   
   };
 
   return (
+
     <div className="booking">
+
       <div className="booking__top d-flex align-items-center justify-content-between">
+
         <h3>
           ${price} <span>/per person</span>
         </h3>
@@ -98,6 +106,7 @@ const Booking = ({ tour, avgRating }) => {
         <h5>Information</h5>
 
         <Form className="booking_info__form" onSubmit={handleClick}>
+
           <FormGroup>
             <input
               type="text"
@@ -148,11 +157,13 @@ const Booking = ({ tour, avgRating }) => {
               onChange={handleChange}
             />
           </FormGroup>
+
         </Form>
       </div>
 
 
                 {/* Calculation */}
+
       <div className="booking__bottom">
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
@@ -175,6 +186,12 @@ const Booking = ({ tour, avgRating }) => {
           Book Now
         </Button>
       </div>
+
+      {/* <Thankyou booking={booking}/> */}
+
+      {/* <Mybooking /> */}
+
+
     </div>
   );
 };
