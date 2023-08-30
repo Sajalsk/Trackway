@@ -5,7 +5,7 @@ const tourSchema = new mongoose.Schema(
     title: {
       type: String,
      // required: true,
-      // unique: true,
+      unique: true,
     },
     
     city: {
@@ -20,11 +20,18 @@ const tourSchema = new mongoose.Schema(
       type: Number,
       //  required: true,
     },
+
+    // photo: {
+    //   // data: Buffer,
+    //   type: String,
+    //   // required: true,
+    // },
+    
     photo: {
-      // data: Buffer,
+      data: Buffer, 
       type: String,
-      // required: true,
     },
+
     desc: {
       type: String,
       // required: true,

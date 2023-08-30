@@ -10,9 +10,10 @@ import { BASE_URL } from "../../Utilis/config";
 // import Thankyou from "../../pages/Thankyou";
 // import Mybooking from "../../pages/Mybooking";
 
-const Booking = ({ tour, avgRating }) => {
+const Booking = ({ tour, avgRating }) => {      // passing as a props
+  
+  const { price, reviews,title } = tour;        // destructuring props of tour
 
-  const { price, reviews,title } = tour;
   const navigate = useNavigate();
 
   const {user} = useContext(AuthContext)
@@ -33,12 +34,11 @@ const Booking = ({ tour, avgRating }) => {
   const guestSizeRef=  useRef(" "); 
   const contactRef= useRef(" ");
  
-  
   const handleChange = (e) => {
     setbooking((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
-
-  const ServiceFee = 10;
+ 
+ const ServiceFee = 10;
 
   if(booking.guestSize===0)  var totalamount = 0;
   else  totalamount = Number(price) * Number(booking.guestSize) + Number(ServiceFee);
@@ -53,7 +53,7 @@ const Booking = ({ tour, avgRating }) => {
         alert("Please Sign in")
       }
      
-         const res  =await fetch(`${BASE_URL}/booking`,{
+         const res  = await fetch(`${BASE_URL}/booking`,{
           method:'post',
           headers:{
             'content-type':'application/json'
@@ -94,7 +94,7 @@ const Booking = ({ tour, avgRating }) => {
       <div className="booking__top d-flex align-items-center justify-content-between">
 
         <h3>
-          ${price} <span>/per person</span>
+          ${price} <span>/per person</span>        { /* using props */ }
         </h3>
         <span className="tour__rating d-flex align-items-center ">
           <i className="ri-star-fill"></i> {avgRating === 0 ? null : avgRating} (

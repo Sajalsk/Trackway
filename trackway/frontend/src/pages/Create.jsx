@@ -14,16 +14,18 @@ const Create = () => {
     title : "",
     city:"",
     address:"",
-    photo:"",
+    // photo:"",
     distance:"",
     maxGroupSize:"",
     price:"",
-    // photo:"file:///C:/Users/Sajal%20khandelwal/Downloads/Screenshot%202023-08-06%20155232.jpg",
+    photo:"/tour-images/tour-img04.jpg",
    
   });
 
   const handleChange = (e) => {
     setCreateTour((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    console.log("In here setcreatetour");
+    console.log(setCreateTour);
   };
 
   const handleCreate = async (e) => {
@@ -35,24 +37,23 @@ const Create = () => {
         alert("Please Sign in")
       }
      
-         const res  =await fetch(`${BASE_URL}/tours`,{
+          const res  = await fetch(`${BASE_URL}/tours`,{
           method:'post',
           headers:{
             'content-type':'application/json'
           },
           credentials:'include',
-          body:JSON.stringify(CreateTour)
-          
+          body:JSON.stringify(CreateTour) 
          })
          
          const result = await res.json();
          if(!res.ok)  {
          return alert(result.message)
          } 
-         console.log("In try")
+         console.log("In try create frontend")
          
     } catch (err) {
-      console.log("Error in here")
+      console.log("Error in here frontend")
       alert(err.message)
     }
   };
@@ -105,8 +106,8 @@ const Create = () => {
     {/* Image  */}
     
     <div className="form-group col-md-4 upload-form">
-    <label htmlFor="image">Choose an Image</label>
-    <input type="file" className="form-control"  onChange={handleChange}/>
+    <label htmlFor="photo">Choose an Image</label>
+    <input type="file" className="form-control" id="photo" onChange={handleChange}/>
     </div>
 
 

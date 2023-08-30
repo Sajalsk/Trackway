@@ -34,9 +34,12 @@ const Searchbar = () => {
     if (!res.ok) alert("Sommething went Wrong");
 
     const result = await res.json();
+
     navigate(`/tours/search?city=${location}`, { state: result.data });
     
-    console.log(location)
+    // console.log(location)
+    //  console.log(result);
+    // console.log(res);
   };
 
   return (

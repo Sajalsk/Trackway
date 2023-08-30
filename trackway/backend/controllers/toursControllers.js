@@ -12,11 +12,12 @@ export const CreateTour = async (req, res) => {
       message: "Successfully Created",
       data: savedTour,
     });
+    
   } catch (err) {
     console.log(err);
     console.log(res);
     console.log("In create tour Catch")
-    res.status(500).json({ success: false, message: "Failed to Create new Tour due to backend" });
+    res.status(500).json({ success: false, message: "Data created Successfully catch" });
   }
 };
 
@@ -97,8 +98,9 @@ export const GetTourbySearch = async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Successfully in Search",
+      data: tour, // Include the search results in the response
     });
-    console.log("tryCity." , city);
+  //  console.log("tryCity." , city);
     // console.log(res)
   } catch (err) {
     
@@ -120,9 +122,9 @@ export const GetAllTour = async (req, res) => {
   
   try {
     const tours = await Tour.find({})
-      // .populate("reviews")
-      // .skip(page * 8) // Counting logic
-      // .limit(8);
+      .populate("reviews")
+      .skip(page * 8) // Counting logic
+      .limit(8);
 
     res.status(200).json({
       success: true,

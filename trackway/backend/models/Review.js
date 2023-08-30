@@ -8,15 +8,15 @@ const reviewSchema = new mongoose.Schema(
     },
     username: {
       type: String,
-      required: true,
+      // required: true,
     },
     reviewText: {
       type: String,
-      required: true,
+      // required: true,
     },
     rating: {
       type: Number,
-      required: true,
+      // required: true,
       min: 0,
       max: 5,
       default: 0,

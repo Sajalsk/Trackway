@@ -15,15 +15,16 @@ const Tours = () => {
   const [page, setpage] = useState(0);
 
   const { data: tours, loading, error } = useFetch(`${BASE_URL}/tours?page=${page}`);
-  const { data: tourCount } = useFetch(`${BASE_URL}/tours/search/GetAllTour`);
+  const { data: tourCount } = useFetch(`${BASE_URL}/tours/search/getTourByCount`);
 
   useEffect(() => {
-    //  const pages = Math.ceil(tourCount / 8);
-    const pages = tours;
+    const pages = Math.ceil(tourCount / 8);
+   // const pages = tours;
 
     setpageCount(pages);
     window.scrollTo(0,0);
-  }, [page,tourCount,tours]);
+  }, [page,tourCount,tours]);     /*{,tourCount}*/
+
 
   return (
     <>

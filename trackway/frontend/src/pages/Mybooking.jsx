@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "reactstrap";
 import "./Thankyou.css";
@@ -6,9 +6,16 @@ import "./Thankyou.css";
 // import Booking from "../components/Booking/Booking";
 import './Mybooking.css'
 
+import useFetch from "../hooks/useFetch";
+import { BASE_URL } from "../Utilis/config";
 
-const Mybooking = (props) => {
-  const { tourName , guestSize} = props;
+const Mybooking = ({ tourName , guestSize , fullName} ) => { {/* Booking*/}
+
+  // const { tourName , guestSize , fullName} = Booking;
+
+  //  console.log(tourName);
+  const { data: tours, loading, error } = useFetch(`${BASE_URL}/tours`);
+  // const [page, setpage] = useState(0);
 
   return (
     <>
@@ -25,7 +32,10 @@ const Mybooking = (props) => {
       <div className="cardBook" style={{ width: "18rem", margin: "0px 0px 45px" }}>
          <img srcSet="https://wallpaperaccess.com/full/41839.jpg" alt="" />
         <div className="card-body">
-          <h5 style={{marginTop:"10px"}} className="card-title">Tour Name {tourName} </h5>
+        <h3>
+          ${fullName} <span>/per person</span>
+        </h3>
+          <h5 style={{marginTop:"10px"}} className="card-title">{tourName}</h5>
           <p className="card-text">Guest Size{guestSize}</p>
           <p className="card-text">
             <small className="text-muted">
