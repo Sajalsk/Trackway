@@ -16,26 +16,26 @@ const Searchbar = () => {
 
   const Searchhandle = async () => {
     
-    const location = locationRef.current.value;
-    // const Whereto = WheretoRef.current.value;
+    // const location = locationRef.current.value;
+    const Whereto = WheretoRef.current.value;
     // const Date = DateRef.current.value;
     // const maxGroupSize = maxGroupSizeRef.current.value;
 
-    if (location === "") {
-      alert("All Fields are Required");
-    }
+    // if (location === "") {
+    //   alert("All Fields are Required");
+    // }
     
     // maxgroupsize ?: maxGroupSize
 
     const res = await fetch(
-      `${BASE_URL}/tours/search/getTourBySearch?city=${location}`
+      `${BASE_URL}/tours/search/getTourBySearch?title=${Whereto}`
     );
 
     if (!res.ok) alert("Sommething went Wrong");
 
     const result = await res.json();
 
-    navigate(`/tours/search?city=${location}`, { state: result.data });
+    navigate(`/tours/search?title=${Whereto}`, { state: result.data });
     
     // console.log(location)
     //  console.log(result);
@@ -54,7 +54,7 @@ const Searchbar = () => {
               <i className="ri-map-pin-line"></i>
               {/* From */}
               <div>
-                <h6>From</h6>
+                <h6>Location</h6>
                 <input
                   type="text"
                   placeholder="Leaving From..."
@@ -69,7 +69,7 @@ const Searchbar = () => {
               <i className="ri-map-pin-fill"></i>
               {/* Location */}
               <div>
-                <h6>Location</h6>
+                <h6>Where to</h6>
                 <input type="text" placeholder="Where to..." ref={WheretoRef} />
               </div>
             </span>
@@ -80,7 +80,7 @@ const Searchbar = () => {
             <span>
               <i className="ri-calendar-todo-line"></i>
               <div>
-                <h6>Today</h6>
+                <h6>When</h6>
                 <input type="date" placeholder="Date" ref={DateRef} />
               </div>
             </span>
@@ -89,12 +89,12 @@ const Searchbar = () => {
           <FormGroup className="d-flex gap-4 form__group form__group-fast">
             {/* maxGroupSize */}
             <span>
-              <i className="ri-group-line"></i>
+            <i class="ri-briefcase-4-fill"></i>
               <div>
-                <h6>Adults</h6>
+                <h6>Max Luggage</h6>
                 <input
                   type="number"
-                  placeholder="Adults"
+                  placeholder="Luggage"
                   ref={maxGroupSizeRef}
                 />
               </div>

@@ -10,28 +10,34 @@ import useFetch from "../hooks/useFetch";
 import { BASE_URL } from "../Utilis/config";
 
 const Tours = () => {
-  
   const [pageCount, setpageCount] = useState(0);
   const [page, setpage] = useState(0);
 
-  const { data: tours, loading, error } = useFetch(`${BASE_URL}/tours?page=${page}`);
-  const { data: tourCount } = useFetch(`${BASE_URL}/tours/search/getTourByCount`);
+  const {
+    data: tours,
+    loading,
+    error,
+  } = useFetch(`${BASE_URL}/tours?page=${page}`);
+  const { data: tourCount } = useFetch(
+    `${BASE_URL}/tours/search/getTourByCount`
+  );
 
   useEffect(() => {
     const pages = Math.ceil(tourCount / 8);
-   // const pages = tours;
+    // const pages = tours;
 
     setpageCount(pages);
-    window.scrollTo(0,0);
-  }, [page,tourCount,tours]);     /*{,tourCount}*/
-
+    window.scrollTo(0, 0);
+  }, [page, tourCount, tours]); /*{,tourCount}*/
 
   return (
     <>
-      {/* Image  */}
+      {/* Title  */}
+
       <CommonSection title={"All Tours"} />
 
       {/* SearchBar  */}
+
       <section>
         <Container>
           <Row>
@@ -43,22 +49,26 @@ const Tours = () => {
       </section>
 
       <section className="pt-0">
-       
-       {/* Loading && error  */}
-        <Container>
-          {loading && <h4 className="text-center pt-05">Loading....</h4>}  {/*  !loading   */}
-          {error && <h4 className="text-center pt-05">{error}</h4>}         {/*  !error   */}
+        {/* Loading && error  */}
 
-          {!loading &&  !error && (
+        <Container>
+          {loading && <h4 className="text-center pt-05">Loading....</h4>}{" "}
+          {/*  !loading   */}
+          {error && <h4 className="text-center pt-05">{error}</h4>}{" "}
+          {/*  !error   */}
+          {!loading && !error && (
             <Row>
-                 {/* Mapping of Tours & pagination  */}
-              {tours?.map((tour) => (                         /* tour = tours */
+              {/* Mapping of Tours & pagination  */}
+
+              {tours?.map((tour /* tour = tours */) => (
                 <Col lg="3" className="mb-4" key={tour.id}>
                   <Tourcard tour={tour} />
                 </Col>
               ))}
+
+              {/* Pagination  */}
+
               <Col lg="12">
-                {/* Pagination  */}
                 <div className="pagination d-flex align-items-center justify-content-center mt-4 gap-3">
                   {[...Array(pageCount).keys()].map((number) => (
                     <span
@@ -77,6 +87,7 @@ const Tours = () => {
       </section>
 
       {/* Newsletter */}
+
       <div className="nz">
         <Newsletter />
       </div>

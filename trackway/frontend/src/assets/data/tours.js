@@ -15,7 +15,7 @@ const tours = [
     address : "Delhi",
     price: 79,
     maxGroupSize: 10,
-    desc: "This is the description",
+    desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
     reviews: [
       {
         name: "jhon doe",
@@ -39,7 +39,7 @@ const tours = [
     address : "Delhi",
     price: 89,
     maxGroupSize: 8,
-    desc: "This is the description",
+    desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
     reviews: [
       {
         name: "jhon doe",
@@ -58,7 +58,7 @@ const tours = [
     address : "Delhi",
     price: 199,
     maxGroupSize: 8,
-    desc: "This is the description",
+    desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
     reviews: [
       {
         name: "jhon doe",
@@ -76,7 +76,7 @@ const tours = [
     distance: 500,
     price: 59,
     maxGroupSize: 8,
-    desc: "This is the description",
+    desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
     reviews: [
       {
         name: "jhon doe",
@@ -95,7 +95,7 @@ const tours = [
     address : "Delhi",
     price: 199,
     maxGroupSize: 8,
-    desc: "This is the description",
+    desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
     reviews: [
       {
         name: "jhon doe",
@@ -114,7 +114,7 @@ const tours = [
     address : "Delhi",
     price: 299,
     maxGroupSize: 8,
-    desc: "This is the description",
+    desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
     reviews: [
       {
         name: "jhon doe",
@@ -133,7 +133,7 @@ const tours = [
     address : "Delhi",
     price: 99,
     maxGroupSize: 8,
-    desc: "This is the description",
+    desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
     reviews: [
       {
         name: "jhon doe",
@@ -152,7 +152,7 @@ const tours = [
     address : "Delhi",
     price: 89,
     maxGroupSize: 8,
-    desc: "This is the description",
+    desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
     reviews: [
       {
         name: "jhon doe",

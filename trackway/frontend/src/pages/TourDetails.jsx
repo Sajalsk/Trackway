@@ -95,7 +95,8 @@ const TourDetails = () => {
                 
                 <div className="tour__info">
                   {/* Title  */}
-                  <h2>{title}</h2>
+                  <i className="ri-map-pin-add-line"></i> {city}
+
                   <div className="d-flex align-items-center gap-5">
                     {/* Rating  */}
                     <span className="tour__rating d-flex align-items-center gap-1">
@@ -120,27 +121,30 @@ const TourDetails = () => {
                   <div className="tour-extra-details">
                     {/* City  */}
                     <span>
-                      <i className="ri-map-pin-add-line"></i> {city}
+                    <h2>{title}</h2>
                     </span>
                     <span>
                       {/* Distance  */}
-                      <i className="ri-map-2-line"></i> {distance} miles
+                      <i className="ri-map-2-line"></i> {distance} KM
                     </span>
                     {/* Price  */}
                     <span>
-                      <i className="ri-exchange-dollar-line"></i>${price}/Person
+                      <i className="ri-exchange-dollar-line"></i>${price}/Luggage
                     </span>
                     {/* Size  */}
                     <span>
-                      <i className="ri-group-line"></i> {maxGroupSize} People
+                      <i className="ri-group-line"></i> {maxGroupSize} Max Luggage
                     </span>
                     <span>
-                      <i className="ri-group-line"></i> {featured} Featured
+                    <i class="ri-train-fill"></i> {featured} Train
                     </span>
                   </div>
                   {/* Description  */}
                   <h5>Description</h5>
                   <p>{desc}</p>
+
+                  <h5>Contact</h5>
+                  <p>Contact No.</p>
                 </div>
                 {/* End of Tour Content  */}
 

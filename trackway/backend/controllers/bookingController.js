@@ -13,8 +13,7 @@ export const createBooking = async (req, res) => {
     } catch (err) {
       res.status(200).json({ success: "false", message: "Failed to Book due to Server Issues" });
       console.log(err)
-    }
-    
+    }  
 }
 
 // get single booking
