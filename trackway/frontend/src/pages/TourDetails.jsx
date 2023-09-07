@@ -35,6 +35,9 @@ const TourDetails = () => {
     address,
     maxGroupSize,
     featured,
+    contact,
+    client,
+    date,
   } = tour;
 
  //  console.log(tour);
@@ -112,10 +115,22 @@ const TourDetails = () => {
                         //  console("Just hitted")
                       )}
                     </span>
+
                     {/* Address  */}
                     <span>
                       <i className="ri-map-pin-line"></i> {address}
                     </span>
+
+                 {/* Client  */}
+                    <span>
+                    <i class="ri-calendar-todo-fill"></i> {date}
+                    </span>
+
+                   {/* date  */}
+                    <span>
+                    <i className="ri-account-circle-line"></i> {client}
+                    </span>
+
                   </div>
 
                   <div className="tour-extra-details">
@@ -129,14 +144,14 @@ const TourDetails = () => {
                     </span>
                     {/* Price  */}
                     <span>
-                      <i className="ri-exchange-dollar-line"></i>${price}/Luggage
+                      <i className="ri-exchange-dollar-line"></i>₹{price}/Luggage
                     </span>
                     {/* Size  */}
                     <span>
                       <i className="ri-group-line"></i> {maxGroupSize} Max Luggage
                     </span>
                     <span>
-                    <i class="ri-train-fill"></i> {featured} Train
+                    <i className="ri-train-fill"></i> {featured} Train
                     </span>
                   </div>
                   {/* Description  */}
@@ -144,7 +159,7 @@ const TourDetails = () => {
                   <p>{desc}</p>
 
                   <h5>Contact</h5>
-                  <p>Contact No.</p>
+                  <p>{contact}</p>
                 </div>
                 {/* End of Tour Content  */}
 

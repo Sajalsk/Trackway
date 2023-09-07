@@ -30,7 +30,7 @@ const Home = () => {
             <div className="hero__content">
               <div className="hero__subtitle d-flex align-items-center">
                 <Subtitle subtitle={"Know before you go"} />
-                <img src={worldImage} alt="" />
+                <img style={{height:"100px" , width:"90px"}} src={worldImage} alt="" />
               </div>
               <h1>
                 Travelling Opens the Door to creating {" "}
@@ -118,7 +118,7 @@ const Home = () => {
               <div className="counter__wrapper d-flex align-items-center gap-5">
                 <div className="counter__box">
                   <span>12K+</span>
-                  <h6>Successfull Trip</h6>
+                  <h6>Successfull Collabs</h6>
                 </div>
                 <div className="counter__box">
                   <span>20K+</span>

@@ -30,12 +30,15 @@ const Searchbar = () => {
     const res = await fetch(
       `${BASE_URL}/tours/search/getTourBySearch?title=${Whereto}`
     );
+    // &date=${Date}
 
     if (!res.ok) alert("Sommething went Wrong");
 
     const result = await res.json();
 
     navigate(`/tours/search?title=${Whereto}`, { state: result.data });
+
+    // &date=${Date}
     
     // console.log(location)
     //  console.log(result);
@@ -89,7 +92,7 @@ const Searchbar = () => {
           <FormGroup className="d-flex gap-4 form__group form__group-fast">
             {/* maxGroupSize */}
             <span>
-            <i class="ri-briefcase-4-fill"></i>
+            <i className="ri-briefcase-4-fill"></i>
               <div>
                 <h6>Max Luggage</h6>
                 <input

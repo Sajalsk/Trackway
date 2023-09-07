@@ -11,20 +11,20 @@ import ServiceCard from "./ServiceCard";
 const ServiceData = [
   {
     imgUrl: weatherimg,
-    title: "Calculate Weather",
-    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus id accusantium ut.",
+    title: "Calculate Dynamic Price",
+    desc: "This website enables cost-effective delivery of goods through user and user interaction and efficient logistics.",
   },
 
   {
     imgUrl: customizationImg,
     title: "Customise",
-    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus id accusantium ut.",
+    desc: "Enhance delivery services and streamline operations for seamless goods transportation.",
   },
 
   {
     imgUrl: guideImg,
-    title: "Guide",
-    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus id accusantium ut.",
+    title: "Collab",
+    desc: "The data informs about the movement of individuals between different locations and helps them to connect.",
   },
 ];
 

@@ -7,6 +7,11 @@ const tourSchema = new mongoose.Schema(
      // required: true,
       unique: true,
     },
+
+    date :{
+      type: String,
+      format: "%d-%m-%y",
+    },
     
     city: {
       type: String,
@@ -36,6 +41,12 @@ const tourSchema = new mongoose.Schema(
       type: String,
       // required: true,
     },
+
+    client: {
+      type: String,
+      // required: true,
+    },
+
     price: {
       type: Number,
       // required: true,
@@ -44,7 +55,9 @@ const tourSchema = new mongoose.Schema(
       type: Number,
       // required: true,
     },
-
+    contact :{
+      type: Number,
+    },
     reviews: [
       {
         type: mongoose.Types.ObjectId,
@@ -52,10 +65,15 @@ const tourSchema = new mongoose.Schema(
       },
     ],
 
-    featured: {
-      type: Boolean,
+    featured: [
+      {
+        type: String,
       default: false,
     },
+
+  ],
+
+   
   },
   { timestamps: true }
 );

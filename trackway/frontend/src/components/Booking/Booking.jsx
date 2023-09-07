@@ -85,7 +85,7 @@ const Booking = ({ tour, avgRating }) => {    // passing as a props
     <div className="booking">
       <div className="booking__top d-flex align-items-center justify-content-between">
         <h3>
-          ${price} <span>/per luggage</span> {/* using props */}
+        ₹{price} <span>/per luggage</span> {/* using props */}
         </h3>
         <span className="tour__rating d-flex align-items-center ">
           <i className="ri-star-fill"></i> {avgRating === 0 ? null : avgRating}{" "}
@@ -155,18 +155,18 @@ const Booking = ({ tour, avgRating }) => {    // passing as a props
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-1">
-              ${price}
+            ₹{price}
               <i className="ri-close-circle-line"></i> 1 Person
             </h5>
-            <span>${price}</span>
+            <span>₹{price}</span>
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0">
             <h5>Service Charged</h5>
-            <span>${ServiceFee}</span>
+            <span>₹{ServiceFee}</span>
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0 total">
             <h5>Total Price</h5>
-            <span>${totalamount}</span>
+            <span>₹{totalamount}</span>
           </ListGroupItem>
         </ListGroup>
         <Button className="btn primary__btn w-100  mt-4" onClick={handleClick}>
