@@ -141,7 +141,6 @@ export const GetAllTour = async (req, res) => {
   }
 };
 
-
 // GetFeatured Tour
 
 export const GetFeatured = async (req, res) => {

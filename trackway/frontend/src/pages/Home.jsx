@@ -29,7 +29,7 @@ const Home = () => {
          
             <div className="hero__content">
               <div className="hero__subtitle d-flex align-items-center">
-                <Subtitle subtitle={"Know before you go"} />
+                <Subtitle subtitle={"Solutions for Logistics"} />
                 <img style={{height:"100px" , width:"90px"}} src={worldImage} alt="" />
               </div>
               <h1>
@@ -85,7 +85,7 @@ const Home = () => {
         </Container>
       </section>
 
-      {/* Booking & FeatureList */}
+      {/* Booking & Tours */}
       <section>
         <Container>
           <Row>

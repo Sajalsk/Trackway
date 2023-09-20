@@ -13,6 +13,7 @@ const Tourcard = ({ tour }) => {
       {/* TourCard is mapped in the FeatureList */}
 
       {/* Outer  Rendering from Tour data */}
+      
       <Card>
         {/* Image & Season  */}
         <div className="tour__img">

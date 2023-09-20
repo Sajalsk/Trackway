@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { Col, Row, Button, Container } from "reactstrap";
 import "./Thankyou.css";
 import Newsletter from "../components/Shared/Newsletter";
-import Booking from "../components/Booking/Booking";
+// import Booking from "../components/Booking/Booking";
 
 const Thankyou = (props) => {
 
-  const { booking } = props;
+  // const { booking } = props;
 
   return (
     <section>

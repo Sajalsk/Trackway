@@ -24,12 +24,12 @@ const [credential, setCredential] = useState({
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  var [count, setCount] = useState(0);
+  // var [count, setCount] = useState(0);
   var [disabled, setDisabled] = useState(true);
 
   useEffect(() => {
     // eslint-disabled-next-line
-    setCount = 0;
+    // setCount = 0;
     setDisabled(true);
   }, []);
 
@@ -66,20 +66,24 @@ const [credential, setCredential] = useState({
     setCredential((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
+  /*
   const Verify = () => {
     // window.open ('https://www.signzy.com/fintech-apis/aadhaar-verification-api/');
     // setCount=1;
     alert("Verfied");
     setCount = count + 1;
   //  console.log(setCount);
+/*
 
     // console.log(setDisabled);
   };
 
+  /*
   const statecheck = () => {
     //  console.log(setDisabled);
    //  console.log(setCount);
   };
+  */
 
   const d = [
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],

@@ -31,8 +31,6 @@ const Header = () => {
   const navigate= useNavigate(null);
   const {user,dispatch}= useContext(AuthContext);
 
- 
-
   const logout=()=>{
     dispatch({type:"LOGOUT"});
     navigate('/home')
@@ -48,6 +46,7 @@ const Header = () => {
   }
 
   return (
+
     // Navbar
     <header className="header">
       <Container>
