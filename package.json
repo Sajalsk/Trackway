@@ -1,4 +1,12 @@
 {
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+
   "dependencies": {
     "bootstrap": "^5.3.1"
   },
