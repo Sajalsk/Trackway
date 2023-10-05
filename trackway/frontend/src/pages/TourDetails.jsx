@@ -123,7 +123,7 @@ const TourDetails = () => {
 
                  {/* Client  */}
                     <span>
-                    <i class="ri-calendar-todo-fill"></i> {date}
+                    <i className="ri-calendar-todo-fill"></i> {date}
                     </span>
 
                    {/* date  */}

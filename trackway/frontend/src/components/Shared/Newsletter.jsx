@@ -4,6 +4,11 @@ import { Container, Row, Col } from "reactstrap";
 // import Male from '../../assets//images/Trackway.png'
 
 const Newsletter = () => {
+
+    const handleNews = () => {
+         alert("Mail has been sent to your email id, Please check")
+    }
+
   return (
    <section className='Newsletter'>
     <Container>
@@ -15,7 +20,7 @@ const Newsletter = () => {
 
                 <div className="news__input">
                     <input type="email" placeholder='Enter your email' />
-                    <button className="btn news__button">Get Started</button>
+                    <button onClick={handleNews} className="btn news__button">Get Started</button>
                 </div>
 
                 <p>Subscribe today to know about the special offers first.</p>  

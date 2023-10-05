@@ -5,13 +5,16 @@ import { verifyAdmin } from '../utils/verifyToken.js';
 const router = express.Router();
 
 //create New Tour
-router.post('/',verifyAdmin, CreateTour);
+router.post('/', CreateTour);
+
+// router.post('/',verifyAdmin, CreateTour);
 
 //create Update Tour
-router.put("/:id",verifyAdmin,UpdateTour);
+router.put("/:id",UpdateTour);  // verifyAdmin
+
 
 //create Delete Tour
-router.delete('/:id',verifyAdmin,DeleteTour);
+router.delete('/:id',DeleteTour);    // verifyAdmin
 
 //create Get Single Tour
 router.get('/:id',GetSingleTour);     // /:id

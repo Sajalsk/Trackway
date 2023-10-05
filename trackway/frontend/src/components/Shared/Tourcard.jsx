@@ -42,7 +42,7 @@ const Tourcard = ({ tour }) => {
           
             {/* date */}
             <span>
-              <i class="ri-calendar-todo-fill"></i> {date}
+              <i className="ri-calendar-todo-fill"></i> {date}
             </span>
 
               {/* Client */}

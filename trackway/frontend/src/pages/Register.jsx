@@ -13,12 +13,12 @@ import { BASE_URL } from "../Utilis/config";
 // import Verify from "./Verify";
 
 const Register = (props) => {
-
-const [credential, setCredential] = useState({
+  
+  const [credential, setCredential] = useState({
     username: undefined,
     email: undefined,
     password: undefined,
-    card : undefined
+    card: undefined,
   });
 
   const { dispatch } = useContext(AuthContext);
@@ -38,6 +38,7 @@ const [credential, setCredential] = useState({
 
     try {
       console.log(credential);
+
       const res = await fetch(`${BASE_URL}/auth/register`, {
         method: "post",
         headers: {
@@ -55,9 +56,8 @@ const [credential, setCredential] = useState({
       dispatch({ type: "REGISTER_SUCCESS" });
       alert("User Created Successfully");
       navigate("/login");
-
     } catch (err) {
-      console.log("in catch");
+      console.log("In catch");
       alert(err.message);
     }
   };
@@ -85,6 +85,8 @@ const [credential, setCredential] = useState({
   };
   */
 
+  // The Verhoeff Algorithm ?
+
   const d = [
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     [1, 2, 3, 4, 0, 6, 7, 8, 9, 5],
@@ -111,6 +113,9 @@ const [credential, setCredential] = useState({
   ];
 
   // validates Aadhar number received as string
+
+  // The Verhoeff Algorithm ?
+
   const validate = (aadharNumber) => {
     let c = 0;
     let invertedArray = aadharNumber.split("").map(Number).reverse();
@@ -123,17 +128,17 @@ const [credential, setCredential] = useState({
   };
 
   const aadhar = () => {
-
     var message = document.getElementById("message");
     var aadharNo = document.getElementById("card").value;
 
-    if (validate(aadharNo) && aadharNo.length>0 ) {
+    if (validate(aadharNo) && aadharNo.length > 0) {
       message.innerHTML =
         "<span style='color: purple;  font-size:18px; '>Number is valid now you can Register 👍🏻 </span>";
       setDisabled(false);
-     // console.log(credential.email);
+      // console.log(credential.email);
     } else {
-      message.innerHTML = "<span style='color: brown;  font-size: 20px; '> Please Enter a valid number 👎🏻</span>";
+      message.innerHTML =
+        "<span style='color: brown;  font-size: 20px; '> Please Enter a valid number 👎🏻</span>";
       setDisabled(true);
     }
     setTimeout(() => {
@@ -159,7 +164,6 @@ const [credential, setCredential] = useState({
                 <h2>Register</h2>
 
                 <Form onSubmit={handleClick}>
-
                   <FormGroup>
                     <input
                       type="username"
@@ -177,7 +181,6 @@ const [credential, setCredential] = useState({
                       required
                       id="email"
                       onChange={handleChange}
-                  
                     />
                   </FormGroup>
 
@@ -192,10 +195,9 @@ const [credential, setCredential] = useState({
                   </FormGroup>
 
                   <FormGroup>
-                    <label htmlFor="card">
-                      Aadhar Card No.
-                    </label>
-                    <input  className="aadhar"
+                    <label htmlFor="card">Aadhar Card No.</label>
+                    <input
+                      className="aadhar"
                       type="text"
                       required
                       id="card"
@@ -209,7 +211,7 @@ const [credential, setCredential] = useState({
                     ></small>
                   </FormGroup>
 
-             {/* Aadhar Verify  */}
+                  {/* Aadhar Verify  */}
                   <Button
                     style={{
                       marginBottom: "10px",
@@ -235,7 +237,7 @@ const [credential, setCredential] = useState({
                     {/* onclick={props.Verify}  */}
                   </div>
 
-              {/* Register  */}
+                  {/* Register  */}
                   <Button
                     disabled={disabled}
                     style={{
@@ -252,25 +254,24 @@ const [credential, setCredential] = useState({
                     Register
                   </Button>
 
+                  <div>{/* <button onClick={statecheck}>State</button> */}</div>
+
+                  {/* Login */}
                   <div>
-                    {/* <button onClick={statecheck}>State</button> */}
-                  </div>
-          
-                {/* Login */}
-                  <div>
-                    <p style={{ fontSize: "18px" }}>Already have a Account ? </p>
-                  
-                    <Button onClick={()=>{
-                      navigate('/login')
-                    }}
+                    <p style={{ fontSize: "18px" }}>
+                      Already have a Account ?{" "}
+                    </p>
+
+                    <Button
+                      onClick={() => {
+                        navigate("/login");
+                      }}
                       style={{ marginLeft: "130px" }}
                       className="btn btn-dark"
                     >
                       Login
                     </Button>
                   </div>
-
-
                 </Form>
               </div>
             </div>

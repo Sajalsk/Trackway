@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const Searchbar = () => {
 
-  const locationRef = useRef(" "); /* For accepting change in fields */
+  const locationRef = useRef(" ");           /* For accepting change in fields */
   const WheretoRef = useRef(" ");
   const DateRef = useRef(" ");
   const maxGroupSizeRef = useRef(0);

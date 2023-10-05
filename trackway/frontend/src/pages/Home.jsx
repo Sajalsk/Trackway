@@ -23,10 +23,12 @@ const Home = () => {
       {/* Starting */}
 
       <Container>
+
+        
         <Row>
-             {/* Heading & Paragraph */}
+
+         {/* Heading & Paragraph */}
           <Col lg="6">
-         
             <div className="hero__content">
               <div className="hero__subtitle d-flex align-items-center">
                 <Subtitle subtitle={"Solutions for Logistics"} />
@@ -103,6 +105,7 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="6">
+
               <div className="experience__content">
                 <h2>
                   With All Our Experience <br />
@@ -112,22 +115,26 @@ const Home = () => {
                 Enhance delivery services and streamline operations for seamless goods transportation. <br />
                 The data informs about the movement of individuals between different locations and helps them to connect.
                 </p>
-               
-
+          
               </div>
+
               <div className="counter__wrapper d-flex align-items-center gap-5">
+                
                 <div className="counter__box">
                   <span>12K+</span>
                   <h6>Successfull Collabs</h6>
                 </div>
+
                 <div className="counter__box">
                   <span>20K+</span>
                   <h6>Regular Clients</h6>
                 </div>
+
                 <div className="counter__box">
                   <span>10+</span>
                   <h6>Years</h6>
                 </div>
+
               </div>
             </Col>
             <Col lg="6">
