@@ -10,7 +10,7 @@ const SearchResultList = () => {
   const location = useLocation();
   const [data] = useState(location.state);
 
-  console.log("data.",data);
+  console.log("data ", data);
 
   return (
     <>
