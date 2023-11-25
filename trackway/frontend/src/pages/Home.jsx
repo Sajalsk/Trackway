@@ -23,8 +23,6 @@ const Home = () => {
       {/* Starting */}
 
       <Container>
-
-        
         <Row>
 
          {/* Heading & Paragraph */}
