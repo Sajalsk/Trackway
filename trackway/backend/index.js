@@ -36,7 +36,7 @@ const connect = async () => {
   }
 };
 
-//middleware
+//middlewares
 
 app.use(express.json());
 app.use(cors(corsOptions));

@@ -11,20 +11,23 @@ import { BASE_URL } from "../Utilis/config";
 
 const Login = () => {
 
-  const [credential, setCredential] = useState({
+  const [credential, setCredential] = useState({  // useState
     email: undefined,
     password: undefined,
   });
 
-  const {dispatch} =useContext(AuthContext)
+  const {dispatch} = useContext(AuthContext)
   const navigate = useNavigate()
 
-  const handleClick = async (e) => {
+  const handleClick = async (e) => {   // main function for backend call
     e.preventDefault();
 
     dispatch ({type:'LOGIN_START'})
 
     try {
+
+      // sending credential to backend
+      
       const res =await fetch(`${BASE_URL}/auth/login`,{
         method:'post',
         headers:{
@@ -35,6 +38,7 @@ const Login = () => {
       
       })
       
+      // got result from backend 
       const result = await res.json()
       if(!res.ok) alert(result.message)
 
@@ -67,7 +71,7 @@ const Login = () => {
                 <div className="user">
                   <img src={userIcon} alt="" />
                 </div>
-                <h2  style={{fontSize:"25px",}}>Login</h2>
+                <h2  style={{fontSize:"25px"}}>Login</h2>
 
                 <Form onSubmit={handleClick}>
 

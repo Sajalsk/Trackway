@@ -56,6 +56,7 @@ const Register = (props) => {
       dispatch({ type: "REGISTER_SUCCESS" });
       alert("User Created Successfully");
       navigate("/login");
+      
     } catch (err) {
       console.log("In catch");
       alert(err.message);
@@ -128,6 +129,7 @@ const Register = (props) => {
   };
 
   const aadhar = () => {
+
     var message = document.getElementById("message");
     var aadharNo = document.getElementById("card").value;
 

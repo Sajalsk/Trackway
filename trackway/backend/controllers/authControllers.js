@@ -24,6 +24,7 @@ export const register = async (req, res) => {
     console.log("above user");
 
     res.status(200).json({ success: true, message: "Succesfully Created" });
+    
   } catch (err) {
     console.log(err);
     res.status(500).json({ success: false, message: "Not Created. Try again" });
@@ -32,12 +33,17 @@ export const register = async (req, res) => {
 
 // User Login
 
-export const login = async (req, res) => {
+export const login = async (req, res) => { // async function 
+
   const email = req.body.email;
   
   try {
     
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }); // query to find the credential and store in user & 
+        // and how is comparing with the password;
+
+        console.log(user);
+        // console.log(password);
 
     // If user doesn't Exist
     if (!user) {
@@ -87,6 +93,6 @@ export const login = async (req, res) => {
      
   } catch (err) {
     console.log(err)
-    return res.status(500).json({ success: false, message: "Failed to Login" });
+    return res.status(500).json({ success: false, message: "Failed to Login due to some errors" });
   }
 };
