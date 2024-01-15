@@ -14,7 +14,7 @@ import { BASE_URL } from "../Utilis/config";
 
 const Mybooking = () => { 
 
-const { data: books, loading, error } = useFetch(`${BASE_URL}/booking`);
+const { data: books, loading, error } = useFetch(`${BASE_URL}/booking/getAllBooking`);
 
     return (
     <>
@@ -31,38 +31,24 @@ const { data: books, loading, error } = useFetch(`${BASE_URL}/booking`);
           </Row>
         </Container>
       </section>
-
+     
+  
+   {/* Main logic to be resolved  */}
+  
       <section className="pt-0">
-       
-       {/* Loading && error  */}
+     
         <Container>
-          {loading && <h4 className="text-center pt-05">Loading....</h4>}  {/*  !loading   */}
-          {error && <h4 className="text-center pt-05">{error}</h4>}         {/*  !error   */}
+          {loading && <h4 className="text-center pt-05">Loading....</h4>}  
+          {error && <h4 className="text-center pt-05">{error}</h4>}        
 
           {!loading &&  !error && (
             <Row>
-                 {/* Mapping of Tours & pagination  */}
-              {books?.map((book) => (                         /* tour = tours */
+                
+              {books?.map((book) => (                       
                 <Col lg="3" className="mb-4" key={book.id}>
                   <Tourcard book={book} />
                 </Col>
               ))}
-
-                 {/* Pagination  */}
-              {/* <Col lg="12">
-                <div className="pagination d-flex align-items-center justify-content-center mt-4 gap-3">
-                  {[...Array(pageCount).keys()].map((number) => (
-                    <span
-                      key={number}
-                      onClick={() => setpage(number)}
-                      className={page === number ? "active__page" : ""}
-                    >
-                      {number + 1}
-                    </span>
-                  ))}
-                </div>
-              </Col> */}
-
             </Row>
           )}
         </Container>
@@ -75,6 +61,14 @@ const { data: books, loading, error } = useFetch(`${BASE_URL}/booking`);
     </>
   );
 };
+
+// const Mybooking =()=> {
+//   return (
+//     <>
+//     <p>Hi there</p>
+//     </>
+//   )
+// }
 
 export default Mybooking;
 

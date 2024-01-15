@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CommonSection from "../components/Shared/CommonSection";
 import "../style/tour.css";
 import { Container, Row, Col } from "reactstrap";
+
 import Tourcard from "../components/Shared/Tourcard";
 import Searchbar from "../components/Shared/Searchbar/Searchbar";
 import Newsletter from "../components/Shared/Newsletter";
@@ -13,16 +14,21 @@ const Tours = () => {
   const [pageCount, setpageCount] = useState(0);
   const [page, setpage] = useState(0);
 
+  // destructuring of tours fro backend
+
   const {
     data: tours,
     loading,
     error,
   } = useFetch(`${BASE_URL}/tours?page=${page}`);
+
+
   const { data: tourCount } = useFetch(
     `${BASE_URL}/tours/search/getTourByCount`
   );
 
   useEffect(() => {
+    
     const pages = Math.ceil(tourCount / 8);
     // const pages = tours;
 
