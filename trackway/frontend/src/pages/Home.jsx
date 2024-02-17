@@ -5,7 +5,7 @@ import { Container, Row, Col } from "reactstrap";
 import heroImg from "../assets//images/hero-img01.jpg";
 import heroImg02 from "../assets//images/hero-img02.jpg";
 import heroVideo from "../assets//images/hero-video.mp4";
-import worldImage from "../assets//images/world.png";
+import luggage from "../assets//images/luggage.webp";
 import exp from "../assets//images/Travel.avif";
 // import MIG from '../components/ImageGallery/MIG';
 
@@ -30,14 +30,14 @@ const Home = () => {
             <div className="hero__content">
               <div className="hero__subtitle d-flex align-items-center">
                 <Subtitle subtitle={"Solutions for Logistics"} />
-                <img style={{height:"100px" , width:"90px"}} src={worldImage} alt="" />
+                <img style={{height:"100px" , width:"90px"}} src={luggage} alt="" />
               </div>
               <h1>
-                Travelling Opens the Door to creating {" "}
+                Travelling Opens the Door to create {" "}
                 <span className="highlight"> memories</span>
               </h1>
               <p>
-              This website enables cost-effective and expedited delivery of goods through user-user interaction for fostering
+              The platform enables cost-effective and expedited delivery of goods through user-user interaction for fostering
               efficient logistics. Enhance delivery services and streamline operations for seamless goods transportation
               </p>
             </div>
