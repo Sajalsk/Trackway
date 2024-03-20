@@ -18,6 +18,7 @@ export const createBooking = async (req, res) => {
 
 // get single booking
 export const getBooking = async (req, res) => {
+
     const Id = req.params.tourId;
   
     try {
@@ -30,15 +31,13 @@ export const getBooking = async (req, res) => {
     }
   };
 
-  // get All booking
+// get All booking
 export const getAllBooking = async (req, res) => {
-    
-    try {
-      const books = await Booking.find();
-      res
-        .status(200)
-        .json({ success: "true", message: "Successfull", data: books });
-    } catch (err) {
-      res.status(500).json({ success: "true", message: "Not Found your Bookings" });
-    }
-  };
+  try {
+    const books = await Booking.find();
+    res.status(200).json({ success: true, message: "Successfully fetched bookings", data: books });
+  } catch (err) {
+    console.error("Error fetching bookings:", err);
+    res.status(500).json({ success: false, message: "Failed to fetch bookings", error: err.message });
+  }
+};

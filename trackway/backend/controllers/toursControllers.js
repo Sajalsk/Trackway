@@ -3,23 +3,38 @@ import Tour from "../models/Tour.js";
 ///Create NewTour
 
 export const CreateTour = async (req, res) => {
-  const newTour = new Tour(req.body);
+  const { title } = req.body;
 
   try {
+    // Check if a tour with the same title already exists
+    const existingTour = await Tour.findOne({ title });
+
+    if (existingTour) {
+      return res.status(400).json({
+        success: false,
+        message: "A tour with this title already exists",
+      });
+    }
+
+    // If no tour with the same title exists, create a new one
+    const newTour = new Tour(req.body);
     const savedTour = await newTour.save();
+
     res.status(200).json({
       success: true,
       message: "Successfully Created",
       data: savedTour,
     });
-    
   } catch (err) {
     console.log(err);
-    console.log(res);
-    console.log("In create tour Catch")
-    res.status(500).json({ success: false, message: "Data created Successfully catch" });
+    res.status(500).json({
+      success: false,
+      message: "Failed to create tour",
+    });
   }
 };
+
+
 
 // Update Tour
 export const UpdateTour = async (req, res) => {
@@ -65,7 +80,7 @@ export const GetSingleTour = async (req, res) => {
 
   try {
 
-    const tour = await Tour.findById(id).populate("reviews");
+    const tour = await Tour.findById(id);
 
     res.status(200).json({
       success: true,
@@ -98,7 +113,7 @@ export const GetTourbySearch = async (req, res) => {
     /*{date} */
    //   distance: { $gte: distance },
     //  maxGroupSize: { $gte: maxGroupSize },
-    }).populate("reviews");
+    });
     res.status(200).json({
       success: true,
       message: "Successfully in Search",
@@ -126,7 +141,6 @@ export const GetAllTour = async (req, res) => {
   
   try {
     const tours = await Tour.find({})
-      .populate("reviews")
       .skip(page * 8) // Counting logic
       .limit(8);
 
@@ -147,7 +161,7 @@ export const GetFeatured = async (req, res) => {
   try {
     
     const tours = await Tour.find({ featured: true })
-      .populate("reviews")
+     
       .limit(8);
     res.status(200).json({
       success: true,

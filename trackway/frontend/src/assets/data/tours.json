@@ -7,7 +7,7 @@
     "price": 199,
     "maxGroupSize": 8,
     "desc": "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact.",
-    "reviews": [],
+   
     "photo": "/tour-images/tour-img02.jpg",
     "featured": true
   },
@@ -19,7 +19,7 @@
     "price": 99,
     "maxGroupSize": 8,
     "desc": "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
-    "reviews": [],
+   
     "photo": "/tour-images/tour-img03.jpg",
     "featured": true
   },
@@ -31,7 +31,7 @@
     "price": 99,
     "maxGroupSize": 8,
     "desc": "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
-    "reviews": [],
+   
     "photo": "/tour-images/tour-img04.jpg",
     "featured": true
   },
@@ -43,7 +43,7 @@
     "price": 99,
     "maxGroupSize": 8,
     "desc": "Hi , I'm travelling and willing to carry any of your luggage if  required. Description is being provided . Feel free to contact",
-    "reviews": [],
+   
     "photo": "/tour-images/tour-img05.jpg",
     "featured": true
   },
@@ -55,7 +55,7 @@
     "price": 99,
     "maxGroupSize": 8,
     "desc": "Hi , I'm travelling and willing to carry any of your luggage if required. Description is being provided . Feel free to contact",
-    "reviews": [],
+   
     "photo": "/tour-images/tour-img06.jpg",
     "featured": true
   },
@@ -67,7 +67,7 @@
     "price": 99,
     "maxGroupSize": 8,
     "desc": "Hi , I'm travelling and willing to carry any of your luggage if  required. Description is being provided . Feel free to contact",
-    "reviews": [],
+   
     "photo": "/tour-images/tour-img07.jpg",
     "featured": true
   },
@@ -79,7 +79,7 @@
     "price": 99,
     "maxGroupSize": 8,
     "desc": "Hi , I'm travelling and willing to carry any of your luggage if  required. Description is being provided . Feel free to contact",
-    "reviews": [],
+   
     "photo": "/tour-images/tour-img03.jpg",
     "featured": true
   },
@@ -91,7 +91,7 @@
     "price": 99,
     "maxGroupSize": 5,
     "desc": "Hi , I'm travelling and willing to carry any of your luggage if  required. Description is being provided . Feel free to contact",
-    "reviews": [],
+   
     "photo": "/tour-images/tour-img08.jpg",
     "featured": false
   },
@@ -103,7 +103,7 @@
     "price": 99,
     "maxGroupSize": 8,
     "desc": "Hi , I'm travelling and willing to carry any of your luggage if  required. Description is being provided . Feel free to contact",
-    "reviews": [],
+   
     "photo": "/tour-images/tour-img09.jpg",
     "featured": false
   }

@@ -16,16 +16,8 @@ const tours = [
     price: 79,
     maxGroupSize: 10,
     desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
-    reviews: [
-      {
-        name: "jhon doe",
-        rating: 4.6,
-      },
-      {
-        name: "jhon doe",
-        rating: 4.6,
-      },
-    ],
+  
+    
 
     avgRating: 4.5,
     photo: tourImg01,
@@ -40,16 +32,12 @@ const tours = [
     price: 89,
     maxGroupSize: 8,
     desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
-    reviews: [
-      {
-        name: "jhon doe",
-        rating: 3.6,
-      },
-    ],
+   
     avgRating: 4.5,
     photo: tourImg02,
     featured: true,
   },
+  
   {
     id: "03",
     title: "Snowy Mountains, Thailand",
@@ -59,12 +47,7 @@ const tours = [
     price: 199,
     maxGroupSize: 8,
     desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
-    reviews: [
-      {
-        name: "jhon doe",
-        rating: 3.8,
-      },
-    ],
+   
     avgRating: 4.5,
     photo: tourImg03,
     featured: true,
@@ -77,12 +60,7 @@ const tours = [
     price: 59,
     maxGroupSize: 8,
     desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
-    reviews: [
-      {
-        name: "jhon doe",
-        rating: 4.9,
-      },
-    ],
+   
     avgRating: 4.5,
     photo: tourImg04,
     featured: true,
@@ -96,12 +74,7 @@ const tours = [
     price: 199,
     maxGroupSize: 8,
     desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
-    reviews: [
-      {
-        name: "jhon doe",
-        rating: 3.2,
-      },
-    ],
+   
     avgRating: 4.5,
     photo: tourImg05,
     featured: false,
@@ -115,12 +88,7 @@ const tours = [
     price: 299,
     maxGroupSize: 8,
     desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
-    reviews: [
-      {
-        name: "jhon doe",
-        rating: 4.9,
-      },
-    ],
+   
     avgRating: 4.5,
     photo: tourImg06,
     featured: false,
@@ -134,12 +102,7 @@ const tours = [
     price: 99,
     maxGroupSize: 8,
     desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
-    reviews: [
-      {
-        name: "jhon doe",
-        rating: 4.6,
-      },
-    ],
+   
     avgRating: 4.5,
     photo: tourImg07,
     featured: false,
@@ -153,12 +116,7 @@ const tours = [
     price: 89,
     maxGroupSize: 8,
     desc: "Hi , I'm travelling and willing to carry any of your luggage if  required . Description is being provided . Feel free to contact",
-    reviews: [
-      {
-        name: "jhon doe",
-        rating: 2.6,
-      },
-    ],
+  
     avgRating: 4.5,
     photo: tourImg03,
     featured: false,

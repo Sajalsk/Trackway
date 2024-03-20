@@ -4,47 +4,36 @@ const tourSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-     // required: true,
-      unique: true,
+   
     },
 
     date :{
       type: String,
-      format: "%d-%m-%y",
+     
     },
     
     city: {
       type: String,
-      // required: true,
+     
     },
     address: {
       type: String,
-      // required: true,
+     
     },
     distance: {
       type: Number,
-      //  required: true,
+   
     },
 
-    // photo: {
-    //   // data: Buffer,
-    //   type: String,
-    //   // required: true,
-    // },
-    
-    photo: {
-      data: Buffer, 
-      type: String,
-    },
 
     desc: {
       type: String,
-      // required: true,
+    
     },
 
     client: {
       type: String,
-      // required: true,
+     
     },
 
     price: {
@@ -58,12 +47,7 @@ const tourSchema = new mongoose.Schema(
     contact :{
       type: Number,
     },
-    reviews: [
-      {
-        type: mongoose.Types.ObjectId,
-        ref: "Review",
-      },
-    ],
+   
 
     featured: [
       {

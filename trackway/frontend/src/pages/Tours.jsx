@@ -11,16 +11,13 @@ import useFetch from "../hooks/useFetch";
 import { BASE_URL } from "../Utilis/config";
 
 const Tours = () => {
+
   const [pageCount, setpageCount] = useState(0);
   const [page, setpage] = useState(0);
 
-  // destructuring of tours fro backend
+  // destructuring of tours from backend
 
-  const {
-    data: tours,
-    loading,
-    error,
-  } = useFetch(`${BASE_URL}/tours?page=${page}`);
+  const { data: tours, loading, error, } = useFetch(`${BASE_URL}/tours?page=${page}`);
 
 
   const { data: tourCount } = useFetch(
@@ -66,11 +63,12 @@ const Tours = () => {
             <Row>
               {/* Mapping of Tours & pagination  */}
 
-              {tours?.map((tour /* tour = tours */) => (
-                <Col lg="3" className="mb-4" key={tour.id}>
-                  <Tourcard tour={tour} />
-                </Col>
-              ))}
+              {tours?.map((tour) => (
+               <Col lg="3" className="mb-4" key={tour._id}>
+               <Tourcard tour={tour} />
+               </Col>
+                ))}
+
 
               {/* Pagination  */}
 

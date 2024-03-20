@@ -44,6 +44,7 @@ const Booking = ({ tour, avgRating }) => {    // passing as a props
     Number(price) * Number(booking.guestSize) + Number(ServiceFee);
 
   const handleClick = async (e) => {
+    
     e.preventDefault();
     console.log(booking);
 
