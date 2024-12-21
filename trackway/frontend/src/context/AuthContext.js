@@ -1,15 +1,16 @@
 // import { useState } from "react";
 import { createContext, useEffect, useReducer } from "react";
 
-const initital_state = {
-
-  user: localStorage.getItem('user')!==undefined
-  ? JSON.parse(localStorage.getItem('user')):null,
+const initial_state = {
+  user: localStorage.getItem('user') !== undefined
+    ? JSON.parse(localStorage.getItem('user'))
+    : null,
   loading: false,
   error: null,
 };
 
-export const AuthContext = createContext(initital_state);   // Authcontex initailisation of context (keyword)
+
+export const AuthContext = createContext(initial_state); 
 
 const AuhtReducer = (state, action) => {
     
@@ -57,7 +58,7 @@ const AuhtReducer = (state, action) => {
 
 export const AuthContextProvider  = ({children})=>{
 
-  const [state, dispatch] = useReducer(AuhtReducer,initital_state)
+  const [state, dispatch] = useReducer(AuhtReducer,initial_state)
 
     useEffect(()=>{
            localStorage.setItem('user',JSON.stringify(state.user))
